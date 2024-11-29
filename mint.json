@@ -18,7 +18,6 @@
       "to": "#07C983"
     }
   },
-  "openapi": "https://blinko-demo.vercel.app/api/openapi.json",
   "topbarLinks": [
     {
       "name": "Demo",
@@ -32,7 +31,8 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "https://blinko-demo.vercel.app/api-doc"
+      "url": "api-reference",
+      "openapi": "https://blinko-demo.vercel.app/api/openapi.json"
     }
   ],
   "anchors": [
