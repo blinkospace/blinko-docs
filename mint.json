@@ -22,13 +22,13 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Demo",
+    "url": "https://blinko-demo.vercel.app/"
   },
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference"
+      "url": "https://blinko-demo.vercel.app/api-doc"
     }
   ],
   "anchors": [
