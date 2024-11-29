@@ -5,8 +5,8 @@
     "dark": "/logo/logo-dark.svg",
     "light": "/logo/logo.svg"
   },
-  "background":{
-    "style":"gradient"
+  "background": {
+    "style": "gradient"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -28,18 +28,11 @@
     "type": "github",
     "url": "https://blinko-demo.vercel.app/"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference", 
-      "openapi": "/api-reference/openapi.json"
-    }
-  ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "API Reference",
       "icon": "book-open-cover",
-      "url": "https://github.com/blinko-space/blinko"
+      "url": "api-reference"
     },
     {
       "name": "Community",
@@ -56,7 +49,7 @@
     {
       "group": "Get Started",
       "pages": [
-       "introduction"
+        "introduction"
       ]
     },
     {
