@@ -17,14 +17,14 @@
   },
   "topbarLinks": [
     {
-      "name": "Github",
+      "name": "Demo",
       "url": "https://github.com/blinko-space/blinko"
     }
   ],
   "topbarCtaButton": {
-    "name": "Demo",
+    "type": "github",
     "url": "https://blinko-demo.vercel.app/"
-  },
+  }
   "tabs": [
     {
       "name": "API Reference",
