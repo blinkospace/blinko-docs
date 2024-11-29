@@ -15,6 +15,7 @@
       "to": "#07C983"
     }
   },
+  "openapi": "https://blinko-demo.vercel.app/api/openapi.json"
   "topbarLinks": [
     {
       "name": "Demo",
@@ -52,11 +53,7 @@
     {
       "group": "Get Started",
       "pages": [
-        {
-          "name":"introduction",
-          "icon:"rocket-launch"
-          "url":"introduction"
-        }
+       "introduction"
       ]
     },
     {
