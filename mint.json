@@ -14,8 +14,8 @@
     "light": "#FFCC00",
     "dark": "#FFCC00",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#FFCC00",
+      "to": "#FFCC00"
     }
   },
   "topbarLinks": [
@@ -79,8 +79,6 @@
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "github": "https://github.com/mintlify"
   }
 }
