@@ -5,7 +5,7 @@
     "dark": "/logo/logo-dark.svg",
     "light": "/logo/logo.svg"
   },
-  "background":"gradient"
+  "background":"gradient",
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#FFCC00",
@@ -16,7 +16,7 @@
       "to": "#07C983"
     }
   },
-  "openapi": "https://blinko-demo.vercel.app/api/openapi.json"
+  "openapi": "https://blinko-demo.vercel.app/api/openapi.json",
   "topbarLinks": [
     {
       "name": "Demo",
