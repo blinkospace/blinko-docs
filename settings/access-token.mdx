@@ -1,0 +1,28 @@
+---
+title: 'Access Token'
+description: 'Configuring Access Token'
+icon: 'key'
+---
+
+<img className="rounded-2xl" src="/images/2024-11-30-11-05-57.png" />
+
+### How to Use
+1. **Get the Access Token**:
+   - Copy the token displayed in the panel.
+
+2. **Test the API**:
+   - Use the provided cURL command or a tool like Postman to test the endpoint.
+   - Replace `<access_token>` with the actual token provided in the panel.
+
+3. **Modify the Payload**:
+   - Adjust the JSON payload (`content` and `type`) as needed to test different inputs.
+
+4. **Check the API Documentation**:
+   - Visit `http://YOUR_DOMAIN:1111/api-doc` to learn more about other available endpoints and parameters.
+
+### Example of the cURL Command
+```bash
+curl -X 'POST' 'http://YOUR_DOMAIN:1111/api/v1/note/upsert' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Bearer eyJhbGcOiJkaXl...' \
+-d '{ "content": "🎉Hello, Blinko! --send from api", "type": 0 }'

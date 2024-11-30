@@ -12,7 +12,7 @@ icon: 'screwdriver-wrench'
 </AccordionGroup>
 
 ## Bash Script Installation
-The **install.sh** use docker run to deploy Blinko.If you feel it's not safe, you can use the docker compose method below.
+The **install.sh** use docker run to deploy Blinko.If you feel it's not safe, you can use the other method below.
 <AccordionGroup>
   <Accordion icon="square-terminal" title="install.sh">
     ```bash 
@@ -135,6 +135,43 @@ To deploy Blinko using docker compose, create a docker-compose.yml file with the
     ```bash
     docker-compose -f docker-compose.yml up -d
     ```
+  </Accordion>
+</AccordionGroup>
+
+
+## S3 Storage Configuration
+<AccordionGroup>
+  <Accordion icon="key" title="Step 1: Understand Key Fields" defaultOpen>
+    - **Access Key ID**: A unique identifier for your S3 credentials
+    - **Access Key Secret**: The secret key paired with the access key for authentication
+    - **Endpoint**: The URL of the S3-compatible service (e.g., AWS S3, MinIO)
+    - **Region**: The geographical location where your S3 bucket is hosted
+    - **Bucket**: The specific storage container name where files will be stored
+  </Accordion>
+
+  <Accordion icon="bucket" title="Step 2: Create an S3 Bucket">
+    1. Log into your Object Storage Provider (AWS, MinIO, or similar)
+    2. Create a Bucket:
+       - Navigate to the storage service
+       - Select the option to create a bucket
+       - Define a unique name and region
+       - Adjust permissions and settings as needed
+  </Accordion>
+
+  <Accordion icon="key-skeleton" title="Step 3: Generate Access Keys">
+    1. Access the Security Section (typically under "IAM" in AWS)
+    2. Create Access Credentials:
+       - Generate an Access Key ID and Secret Access Key
+       - Store these securely for configuration
+  </Accordion>
+
+  <Accordion icon="link" title="Step 4: Configure Endpoint and Test">
+    1. Set up the Endpoint:
+       - AWS users: `https://s3.<region>.amazonaws.com`
+       - Other providers: Check provider documentation for endpoint URL
+    2. Test Configuration:
+       - Verify connection to S3 storage
+       - Perform a test upload/download to confirm functionality
   </Accordion>
 </AccordionGroup>
 

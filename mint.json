@@ -20,8 +20,8 @@
   },
   "topbarLinks": [
     {
-      "name": "Demo",
-      "url": "https://github.com/blinko-space/blinko"
+      "name": "Demo Website",
+      "url": "https://blinko-demo.vercel.app/"
     }
   ],
   "topbarCtaButton": {
@@ -32,17 +32,7 @@
     {
       "name": "API Reference",
       "icon": "book-open-cover",
-      "url": "api-reference"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://github.com/blinko-space/blinko"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://github.com/blinko-space/blinko"
+      "url": "https://blinko-demo.vercel.app/api-doc"
     }
   ],
   "navigation": [
@@ -76,17 +66,13 @@
     {
       "group": "Settings",
       "pages": [
-        "settings/s3"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
+        "settings/s3",
+        "settings/access-token",
+        "settings/task"
       ]
     }
   ],
   "footerSocials": {
-    "github": "https://github.com/mintlify"
+    "github": "https://github.com/blinko-space"
   }
 }
