@@ -1,0 +1,50 @@
+---
+title: 'Setting'
+description: 'Guide to Setting AI'
+icon: 'microchip-ai'
+---
+
+<img className="rounded-2xl" src="/images/2024-11-29-20-23-29.png" />
+
+<AccordionGroup>
+  <Accordion icon="toggle-on" title="1. Enable AI" defaultOpen>
+    - Locate the "**Use AI**" toggle in the settings.
+    - Switch it to the enabled state (purple).
+  </Accordion>
+
+  <Accordion icon="server" title="2. Select the Model Provider">
+    - Choose the AI model provider from the "**Model Provider**" dropdown menu:
+      - If using OpenAI, ensure "OpenAI" is selected.
+      - If using Ollama, ensure "Ollama" is selected.
+  </Accordion>
+
+  <Accordion icon="robot" title="3. Select the AI Model">
+    - Choose a suitable model for your task from the "**AI Model**" dropdown.
+  </Accordion>
+
+  <Accordion icon="network-wired" title="4. Set the Embedding Model">
+    - Select the embedding model from the "**Embedding Model**" dropdown.
+  </Accordion>
+
+  <Accordion icon="key" title="5. Input the API Key">
+    - Enter your OpenAI API key in the "**API Key**" input field:
+      - Ensure that your key is correct and has the necessary permissions.
+  </Accordion>
+
+  <Accordion icon="link" title="6. Set the API Endpoint">
+    - Configure the API endpoint in the "**API Endpoint**" input field:
+      - Ensure the address is valid and matches your API configuration.
+  </Accordion>
+
+  <Accordion icon="arrows-rotate" title="7. Rebuild the Embedding Index">
+    - If you need to rebuild the embedding index:
+      - Click the "**Rebuild**" button to regenerate the embeddings.
+      - If a forced rebuild is required, click "**Force Rebuild**."
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+Ensure the correctness of the API key and endpoint to avoid functionality issues.
+</Warning>
+
+By following the steps above, you can configure and start using the AI features.

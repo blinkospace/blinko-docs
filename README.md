@@ -1,4 +1,7 @@
 # Mintlify Starter Kit
+https://fontawesome.com/icons
+npx --prefer-offline @mintlify/scraping openapi-file ./api-reference/openapi.json -o api-reference
+
 
 Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
 

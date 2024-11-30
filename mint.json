@@ -6,7 +6,7 @@
     "light": "/logo/logo.svg"
   },
   "background": {
-    "style": "gradient"
+    "style": "grid"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -26,7 +26,7 @@
   ],
   "topbarCtaButton": {
     "type": "github",
-    "url": "https://blinko-demo.vercel.app/"
+    "url": "https://github.com/blinko-space/blinko"
   },
   "anchors": [
     {
@@ -49,32 +49,40 @@
     {
       "group": "Get Started",
       "pages": [
-        "introduction"
+        "introduction",
+        "install",
+        "update"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "How to use",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        {
+          "group": "AI",
+          "icon": "robot",
+          "pages": [
+            "how-to-use/ai/ai-setting",
+            "how-to-use/ai/ai-chat",
+            "how-to-use/ai/ai-writing",
+            "how-to-use/ai/ai-tag"
+          ]
+        },
+        "how-to-use/toolbar",
+        "how-to-use/tags",
+        "how-to-use/daily-review",
+        "how-to-use/share-your-note"
+      ]
+    },
+    {
+      "group": "Settings",
+      "pages": [
+        "settings/s3"
       ]
     },
     {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
       ]
     }
   ],
