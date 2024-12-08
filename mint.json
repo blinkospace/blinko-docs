@@ -54,7 +54,8 @@
             "how-to-use/ai/ai-setting",
             "how-to-use/ai/ai-chat",
             "how-to-use/ai/ai-writing",
-            "how-to-use/ai/ai-tag"
+            "how-to-use/ai/ai-tag",
+            "how-to-use/ai/ai-emoji"
           ]
         },
         "how-to-use/toolbar",
@@ -68,7 +69,16 @@
       "pages": [
         "settings/s3",
         "settings/access-token",
-        "settings/task"
+        "settings/task",
+        "settings/preference",
+        "settings/webhook"
+      ]
+    },
+    {
+      "group": "Community",
+      "pages": [
+        "community/community",
+        "community/development"
       ]
     }
   ],

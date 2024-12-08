@@ -48,3 +48,47 @@ Ensure the correctness of the API key and endpoint to avoid functionality issues
 </Warning>
 
 By following the steps above, you can configure and start using the AI features.
+
+## Advanced
+
+<img className="rounded-2xl" src="/images/2024-12-08-13-56-36.png"/>
+
+### Parameters Explained
+
+<AccordionGroup>
+  <Accordion icon="list-ol" title="Top K" defaultOpen>
+    - Determines the number of most relevant chunks to consider
+    - Range: 1-20 (recommended: 2-5)
+    - Higher values include more context but may reduce relevance
+  </Accordion>
+
+  <Accordion icon="chart-line" title="Score">
+    - Minimum similarity score threshold for context inclusion
+    - Range: 0.0-2.0 (recommended: 0.7-0.9)
+    - Higher values ensure more relevant matches
+    - Lower values include more potential matches
+  </Accordion>
+
+  <Accordion icon="lambda" title="Embedding Lambda">
+    - Controls the balance between semantic and lexical similarity
+    - Range: 0.0-1.0 (recommended: 0.2-0.4)
+    - Higher values favor semantic meaning
+    - Lower values favor exact word matches
+  </Accordion>
+</AccordionGroup>
+
+### Best Practices
+
+<Note>
+For optimal results:
+- Start with default values (Top K: 2, Score: 0.8, Lambda: 0.3)
+- Adjust gradually based on response quality
+- Monitor response relevance and accuracy
+</Note>
+
+<Warning>
+Extreme parameter values may lead to:
+- Very limited or irrelevant responses
+- Increased processing time
+- Reduced accuracy
+</Warning>

@@ -1,0 +1,87 @@
+---
+title: 'Webhook Settings'
+description: 'Configure and manage webhooks for real-time notifications'
+icon: 'webhook'
+---
+
+## Overview
+
+Webhooks allow you to receive real-time notifications when specific events occur in your application. This guide explains how to configure and manage webhooks effectively.
+
+## Setting Up Webhooks
+
+<AccordionGroup>
+  <Accordion icon="plus" title="Creating a Webhook" defaultOpen>
+    1. Navigate to Settings > Webhook
+    2. Enter the following details:
+       - Webhook URL
+  </Accordion>
+</AccordionGroup>
+
+## Event Types
+
+<AccordionGroup>
+  <Accordion icon="bell" title="Available Events">
+    - Note Create
+    - Note Updates
+    - Note Delete
+  </Accordion>
+
+  <Accordion icon="code" title="Payload Format">
+    ```json
+    {
+      "webhookType": "user.create",
+      "activityType": "blinko.note.update",
+      "data": {
+        "id": 0,
+        "type": 0,
+        "isArchived": false,
+        "isRecycle": false,
+        "content": "",
+        "isShare": false,
+        "isTop": false,
+        "isReviewed": false,
+        "sharePassword": "",
+        "metadata": null,
+        "accountId": null,
+        "createdAt": "2024-03-21T00:00:00Z",
+        "updatedAt": "2024-03-21T00:00:00Z",
+        "attachments": [
+          {
+            "id": 0,
+            "name": "",
+            "path": "",
+            "type": "",
+            "size": "0",
+            "isShare": false,
+            "sharePassword": "",
+            "createdAt": "2024-03-21T00:00:00Z",
+            "updatedAt": "2024-03-21T00:00:00Z",
+            "noteId": 0
+          }
+        ]
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Security
+
+<AccordionGroup>
+  <Accordion icon="shield" title="Best Practices">
+    - Use HTTPS endpoints only
+    - Implement signature verification
+    - Set up IP whitelisting
+    - Monitor webhook activity
+    - Configure timeout settings
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+Webhook events are delivered in real-time, but may be delayed during high traffic periods.
+</Note>
+
+<Warning>
+Always backup your webhook configurations and maintain fallback notification methods for critical events.
+</Warning>

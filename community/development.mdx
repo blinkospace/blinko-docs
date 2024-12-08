@@ -1,0 +1,81 @@
+---
+title: 'Development Guide'
+description: 'Learn how to set up and develop the project locally'
+---
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (v18 or higher)
+- pnpm (v8 or higher)
+- PostgreSQL
+
+## Getting Started
+
+<AccordionGroup>
+  <Accordion icon="code-branch" title="1. Clone the repository" defaultOpen>
+    ```bash
+    git clone https://github.com/blinko-space/blinko
+    cd blinko
+    ```
+  </Accordion>
+
+  <Accordion icon="cube" title="2. Install dependencies">
+    ```bash
+    pnpm install
+    ```
+  </Accordion>
+
+  <Accordion icon="database" title="3. Database Setup">
+    - Create a PostgreSQL database
+    - Copy `.env.example` to `.env`
+    - Update database connection details in `.env`
+    
+    Run migrations and seed the database:
+    ```bash
+    pnpm migrate-dev
+    ```
+  </Accordion>
+
+  <Accordion icon="play" title="4. Start Development Server">
+    ```bash
+    pnpm dev
+    ```
+    The application will be available at `http://localhost:1111`
+  </Accordion>
+</AccordionGroup>
+
+## Available Scripts
+
+<AccordionGroup>
+  <Accordion icon="database" title="Database Commands">
+    ```bash
+    pnpm generate          # Generate Prisma client
+    pnpm prisma-studio     # Open Prisma Studio
+    pnpm migrate           # Deploy migrations
+    pnpm migrate-dev       # Create and apply migrations
+    pnpm db-seed          # Seed the database
+    pnpm db-reset         # Reset database (caution: deletes all data)
+    ```
+  </Accordion>
+
+  <Accordion icon="code" title="Development Commands">
+    ```bash
+    pnpm dev              # Start development server
+    pnpm dev:https        # Start with HTTPS using ngrok
+    pnpm build           # Build for production
+    pnpm start           # Start production server
+    pnpm analyze         # Analyze bundle size
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Development Tips
+
+<Note>
+The development server runs on port 1111 by default. You can modify this in the `package.json` scripts.
+</Note>
+
+<Warning>
+Running `db-reset` or `migrate-dev-reset` will clear all data in your database. Use with caution!
+</Warning>
