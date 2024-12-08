@@ -1,0 +1,98 @@
+---
+title: 'documentation'
+description: 'Guide to running and modifying documentation locally'
+icon: 'book-open-cover'
+---
+
+## Prerequisites
+
+<AccordionGroup>
+  <Accordion icon="node" title="Install Node.js" defaultOpen>
+    - Download and install [Node.js](https://nodejs.org/)
+    - Recommended version: 16.x or higher
+  </Accordion>
+
+  <Accordion icon="git" title="Install Git">
+    - Install [Git](https://git-scm.com/) for version control
+    - Required for cloning the repository
+  </Accordion>
+</AccordionGroup>
+
+## Getting Started
+
+<Steps>
+  <Step title="Install Mintlify CLI">
+    Install the Mintlify CLI globally using npm:
+    ```bash
+    npm i -g mintlify
+    ```
+  </Step>
+
+  <Step title="Clone the Repository">
+    Clone your documentation repository:
+    ```bash
+    git clone https://github.com/blinko-space/blinko-docs
+    cd blinko-docs
+    ```
+  </Step>
+
+  <Step title="Start Development Server">
+    Run the development server in your documentation root:
+    ```bash
+    mintlify dev
+    ```
+    The documentation will be available at `http://localhost:3000`
+  </Step>
+</Steps>
+
+## Making Changes
+
+<AccordionGroup>
+  <Accordion icon="pen" title="Edit Content" defaultOpen>
+    - Modify `.mdx` files in your repository
+    - Changes will hot-reload in the browser
+    - Use Markdown and MDX components
+  </Accordion>
+
+  <Accordion icon="image" title="Add Images">
+    - Place images in the `/images` directory
+    - Reference them using relative paths:
+    ```md
+    <img src="/images/example.png" />
+    ```
+  </Accordion>
+
+  <Accordion icon="sitemap" title="Update Navigation">
+    - Edit `mint.json` to modify navigation structure
+    - Update page metadata in MDX files
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+<Note>
+Common issues and solutions:
+- If `mintlify dev` fails, try `mintlify install` to reinstall dependencies
+- Ensure you're in the correct directory with `mint.json`
+- Clear your browser cache if changes aren't reflecting
+</Note>
+
+<Warning>
+Always commit your changes to version control:
+```bash
+git add .
+git commit -m "Update documentation"
+git push
+```
+</Warning>
+
+## Deployment
+
+Changes will automatically deploy when pushed to your default branch if you have configured the Mintlify GitHub App.
+
+<Note>
+For optimal deployment:
+- Test all changes locally first
+- Ensure all images and links work
+- Verify navigation structure
+</Note>
