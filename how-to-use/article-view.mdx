@@ -13,6 +13,11 @@ When dealing with long text content, Blinko automatically switches to Article Vi
 ## Features
 
 <AccordionGroup>
+  <Accordion icon="image" title="Cover Image" defaultOpen>
+    - The first image in your text will be used as the article cover
+    - Automatically formats to fit the article header
+  </Accordion>
+
   <Accordion icon="text-size" title="Text Fold Length" defaultOpen>
     - Controls the length at which text content is split
     - Default value: 1024 characters
@@ -49,6 +54,7 @@ When dealing with long text content, Blinko automatically switches to Article Vi
 
 <Note>
 The Article View is automatically enabled when text length exceeds the fold length threshold.
+- Cover images are optional - if no image is found, the article will display without a cover
 </Note>
 
 <Warning>
