@@ -1,0 +1,111 @@
+---
+title: 'Using Ollama'
+description: 'A comprehensive guide to using Ollama as a private AI solution'
+icon: 'microchip-ai'
+---
+
+## Why Choose Ollama?
+
+<AccordionGroup>
+  <Accordion icon="lock" title="Privacy Benefits" defaultOpen>
+    - **Local Processing**: All computations happen on your device
+    - **Data Control**: Your information never leaves your system
+    - **No Cloud Dependency**: Works without internet connection
+    - **Cost-Effective**: No API usage fees
+  </Accordion>
+
+  <Accordion icon="server" title="Technical Advantages">
+    - **Customizable**: Fine-tune models to your needs
+    - **Open Source**: Transparent and community-driven
+    - **Resource Efficient**: Optimized for desktop use
+    - **Easy Integration**: Simple API interface
+  </Accordion>
+</AccordionGroup>
+
+## Popular Ollama Models
+
+<AccordionGroup>
+  <Accordion icon="star" title="General Purpose Models">
+    - **Llama2**: Meta's powerful open-source model
+      - Variants: 7B, 13B, 70B
+      - Good balance of performance and resource usage
+    
+    - **Mistral**: Excellent performance-to-size ratio
+      - Strong reasoning capabilities
+      - Efficient 7B parameter model
+    
+    - **Neural Chat**: Optimized for conversational tasks
+      - Natural dialogue flow
+      - Good context understanding
+  </Accordion>
+</AccordionGroup>
+
+## Understanding Embedding Models
+
+<Note>
+Embedding models convert text into numerical vectors, enabling:
+- Semantic search capabilities
+- Content similarity matching
+- Context-aware responses
+</Note>
+
+### Common Embedding Models
+
+<AccordionGroup>
+  <Accordion icon="microchip" title="Available Options">
+    - **Nomic-Embed**: Efficient general-purpose embeddings
+    - **BGE-Embed**: Strong multilingual support
+    - **MXBAI-Embed**: Optimized for Asian languages
+  </Accordion>
+</AccordionGroup>
+
+## RAG (Retrieval-Augmented Generation)
+
+<AccordionGroup>
+  <Accordion icon="diagram-project" title="How RAG Works" defaultOpen>
+    1. **Document Processing**:
+       - Text is split into chunks
+       - Chunks are converted to embeddings
+       - Embeddings are stored in vector database
+    
+    2. **Query Processing**:
+       - User query is converted to embedding
+       - Similar documents are retrieved
+       - Context is provided to LLM
+    
+    3. **Response Generation**:
+       - LLM generates response using retrieved context
+       - Ensures accuracy and relevance
+  </Accordion>
+</AccordionGroup>
+
+## Advanced Settings
+[Ollama Settings](/how-to-use/ai/ai-setting#advanced)
+
+
+## Best Practices
+
+<Warning>
+Consider your hardware capabilities:
+- Large models require more RAM
+- GPU acceleration improves performance
+- SSD storage recommended for embeddings
+</Warning>
+
+<Note>
+For optimal results:
+- Keep model files on fast storage
+- Regular embedding index updates
+- Monitor response quality
+- Adjust parameters gradually
+</Note>
+
+## Getting Started
+
+1. [Install Ollama](https://ollama.com/)
+2. Choose appropriate models
+3. Configure embedding settings
+4. Test with sample queries
+5. Fine-tune parameters as needed
+<img className="rounded-2xl" src="/images/2024-12-10-09-54-36.png" />
+By following this guide, you can establish a private, efficient AI workflow using Ollama while maintaining full control over your data and processes. 

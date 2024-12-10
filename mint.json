@@ -28,6 +28,15 @@
     "type": "github",
     "url": "https://github.com/blinko-space/blinko"
   },
+  "tabs": [
+    {
+      "name": "Blog",
+      "url": "blog"
+    }
+  ],
+  "primaryTab": {
+    "name": "Home"
+  },
   "anchors": [
     {
       "name": "API Reference",
@@ -82,6 +91,12 @@
         "community/community",
         "community/development",
         "community/doc"
+      ]
+    },
+    {
+      "group": "Blogs",
+      "pages": [
+        "blog/ollama-guide"
       ]
     }
   ],
