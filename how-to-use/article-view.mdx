@@ -1,0 +1,56 @@
+---
+title: 'Article View'
+description: 'Guide to Article View for Long Text'
+icon: 'book-open'
+---
+
+<img className="rounded-2xl" src="/images/2024-12-10-14-12-56.png" />
+
+## Overview
+
+When dealing with long text content, Blinko automatically switches to Article View mode for better readability and navigation.
+
+## Features
+
+<AccordionGroup>
+  <Accordion icon="text-size" title="Text Fold Length" defaultOpen>
+    - Controls the length at which text content is split
+    - Default value: 1024 characters
+    - Adjustable via the slider in settings
+  </Accordion>
+
+  <Accordion icon="heading" title="Title">
+    - Automatically uses the first line of text as the title
+    - Helps with quick content identification
+  </Accordion>
+
+  <Accordion icon="align-left" title="Content">
+    - Displays the remaining text in a clean, readable format
+    - Supports markdown formatting
+    - Includes proper spacing and typography
+  </Accordion>
+</AccordionGroup>
+
+## Configuration
+
+<AccordionGroup>
+  <Accordion icon="gear" title="Customization">
+    - Adjust text fold length in settings
+    - Toggle dark/light mode for optimal reading
+    - Customize font size and spacing
+  </Accordion>
+
+  <Accordion icon="mobile" title="Responsive Design">
+    - Adapts to different screen sizes
+    - Maintains readability on mobile devices
+    - Automatic layout adjustments
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+The Article View is automatically enabled when text length exceeds the fold length threshold.
+</Note>
+
+<Warning>
+Very long texts may impact performance. Consider splitting into multiple documents for optimal experience.
+</Warning>
