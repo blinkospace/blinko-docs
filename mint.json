@@ -3,7 +3,7 @@
   "name": "Blinko",
   "logo": {
     "dark": "/logo/logo-dark.svg",
-    "light": "/logo/logo.svg"
+    "light": "/logo/logo-light.svg"
   },
   "background": {
     "style": "grid"
@@ -47,11 +47,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "install",
-        "update"
-      ]
+      "pages": ["introduction", "install", "update"]
     },
     {
       "group": "How to use",
@@ -88,17 +84,15 @@
     },
     {
       "group": "Community",
-      "pages": [
-        "community/community",
-        "community/development",
-        "community/doc"
-      ]
+      "pages": ["community/community", "community/development", "community/doc"]
+    },
+    {
+      "group": "Brand",
+      "pages": ["brand/logo"]
     },
     {
       "group": "Blogs",
-      "pages": [
-        "blog/ollama-guide"
-      ]
+      "pages": ["blog/ollama-guide"]
     }
   ],
   "footerSocials": {
