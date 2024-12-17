@@ -8,7 +8,7 @@
   "background": {
     "style": "grid"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "colors": {
     "primary": "#FFCC00",
     "light": "#FFCC00",
