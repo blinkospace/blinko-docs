@@ -80,7 +80,8 @@
         "settings/access-token",
         "settings/task",
         "settings/preference",
-        "settings/webhook"
+        "settings/webhook",
+        "settings/sso"
       ]
     },
     {

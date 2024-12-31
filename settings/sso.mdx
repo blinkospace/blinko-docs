@@ -1,0 +1,83 @@
+---
+title: 'SSO Settings'
+description: 'Configure and manage Single Sign-On (SSO) authentication'
+icon: 'key'
+---
+
+## Overview
+
+Single Sign-On (SSO) allows users to access your application using their existing identity provider accounts. We support multiple OAuth2.0-based authentication providers and offer built-in templates for popular platforms.
+
+## Configure OAuth2.0 Provider
+
+<AccordionGroup>
+  <Accordion icon="gear" title="Basic Settings" defaultOpen>
+    1. Navigate to Settings > SSO
+    2. Select a provider template or create a custom provider
+    3. Fill in the following required information:
+       - Provider ID
+       - Provider Name
+       - Provider Icon
+       - Client ID
+       - Client Secret
+  </Accordion>
+
+  <Accordion icon="link" title="URL Configuration">
+    Configure the following OAuth2.0 endpoints:
+    - WellKnown URL
+    - Authorization URL
+    - Token URL
+    - User Info URL
+  </Accordion>
+</AccordionGroup>
+
+## Built-in Templates
+
+<AccordionGroup>
+  <Accordion icon="github" title="Supported Platforms">
+    We provide built-in templates for the following platforms:
+
+    - GitHub
+    - Google
+    - Facebook
+    - Apple
+    - Spotify
+    - Discord
+    - Twitter
+    - Slack
+    - Twitch
+    - LINE
+    - Instagram
+    - Coinbase
+    - Yandex
+    
+    After selecting a template, you only need to fill in the Client ID and Client Secret to complete the configuration.
+  </Accordion>
+
+  <Accordion icon="code" title="Custom Provider">
+    To configure other OAuth2.0 providers:
+    1. Select the "Custom Provider" option
+    2. Manually enter all OAuth2.0 configuration information
+    3. Set appropriate permission scopes
+  </Accordion>
+</AccordionGroup>
+
+## Security Guidelines
+
+<AccordionGroup>
+  <Accordion icon="shield" title="Best Practices">
+    - Use HTTPS endpoints
+    - Securely store Client Secret
+    - Rotate keys periodically
+    - Limit authorization scopes
+    - Configure allowed callback URLs
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+The default callback URL is: `http(s)://{Your Domain}/api/auth/callback/{providerId}`. Make sure to add this URL in your OAuth provider settings.
+</Note>
+
+<Warning>
+Never expose the Client Secret in client-side code. It should only be used on the server side.
+</Warning>
