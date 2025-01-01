@@ -81,7 +81,8 @@
         "settings/task",
         "settings/preference",
         "settings/webhook",
-        "settings/sso"
+        "settings/sso",
+        "settings/link-account"
       ]
     },
     {

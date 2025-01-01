@@ -1,0 +1,55 @@
+---
+title: 'Link Account'
+description: 'Link your SSO account with a password-based account'
+icon: 'link'
+---
+
+## Overview
+
+Account linking allows you to connect your SSO-authenticated account with a password-based account. This feature provides a seamless way to merge your login methods while maintaining security.
+
+## How It Works
+
+<AccordionGroup>
+  <Accordion icon="link" title="Linking Process" defaultOpen>
+    1. Log in with your SSO account
+    2. Navigate to Settings > Link Account
+    3. Enter the credentials of your password-based account
+    4. Confirm the linking process
+  </Accordion>
+
+  <Accordion icon="info" title="Important Notes">
+    - After linking, your SSO account will use the linked account's credentials
+    - Two-Factor Authentication (2FA) settings from the linked account will apply
+    - SSO account information will not sync to the linked account
+    - You can unlink accounts at any time to restore original access
+  </Accordion>
+</AccordionGroup>
+
+## Account Management
+
+<AccordionGroup>
+  <Accordion icon="gear" title="After Linking">
+    When accounts are linked:
+    - Login will use the linked account's credentials
+    - 2FA settings from the linked account will be enforced
+    - SSO login information remains separate
+    - Account preferences and settings from the linked account take precedence
+  </Accordion>
+
+  <Accordion icon="unlock" title="Unlinking Accounts">
+    To unlink accounts:
+    1. Go to Settings > Link Account
+    2. Click "Unlink Account"
+    3. Confirm the action
+    4. Both accounts will return to their original state
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+Account linking is optional and can be reversed at any time. Your original SSO login method will be restored after unlinking.
+</Note>
+
+<Warning>
+Make sure you remember the credentials of your linked account, as they will be required for future logins after linking.
+</Warning>
