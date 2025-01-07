@@ -74,6 +74,12 @@
       ]
     },
     {
+      "group": "Ecosystem",
+      "pages": [
+        "ecosystem/blinko-snap"
+      ]
+    },
+    {
       "group": "Settings",
       "pages": [
         "settings/s3",
