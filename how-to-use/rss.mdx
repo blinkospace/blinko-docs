@@ -1,0 +1,62 @@
+---
+title: 'RSS Feed'
+description: 'Subscribe to public notes via RSS'
+icon: 'rss'
+---
+
+# RSS Feed Integration
+
+Blinko provides RSS feed support for public notes, allowing you to stay updated with the latest content through your favorite RSS reader.
+
+## Feed Availability
+
+Blinko And Notes will be automatically included in the RSS feed if they meet the following criteria:
+- Set to public
+- Has no password protection
+
+## Feed Formats
+
+Blinko supports two standard RSS feed formats:
+
+### 1. Atom Feed
+```
+/api/rss/{userId}/atom?row=20
+```
+
+### 2. RSS Feed
+```
+/api/rss/{userId}/rss?row=20
+```
+
+## Parameters
+
+- `row`: Number of items to return in the feed (default: 20)
+  - Example: `row=50` will return the 50 most recent notes
+  - You can adjust this value based on your needs
+
+## Usage Examples
+
+1. **Default Feed (20 items)**
+   ```
+   http://your-domain/api/rss/1/atom
+   http://your-domain/api/rss/1/rss
+   ```
+
+2. **Custom Number of Items**
+   ```
+   http://your-domain/api/rss/1/atom?row=50
+   http://your-domain/api/rss/1/rss?row=100
+   ```
+
+## Feed Reader Integration
+
+1. Copy the desired feed URL
+2. Add it to your RSS reader
+3. Your reader will automatically fetch new public notes as they are created
+
+## Note Privacy
+
+Remember:
+- Only public notes will appear in the RSS feed
+- Private notes and password-protected notes are excluded
+- Changing a note's privacy settings will affect its availability in the feed
