@@ -47,7 +47,11 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "install", "update"]
+      "pages": [
+        "introduction",
+        "install",
+        "update"
+      ]
     },
     {
       "group": "How to use",
@@ -66,7 +70,7 @@
         },
         "how-to-use/blinko-or-note",
         "how-to-use/toolbar",
-         "how-to-use/music",
+        "how-to-use/music",
         "how-to-use/tags",
         "how-to-use/daily-review",
         "how-to-use/share-your-note",
@@ -94,15 +98,24 @@
     },
     {
       "group": "Community",
-      "pages": ["community/community", "community/development", "community/doc"]
+      "pages": [
+        "community/community",
+        "community/development",
+        "community/doc"
+      ]
     },
     {
       "group": "Brand",
-      "pages": ["brand/logo"]
+      "pages": [
+        "brand/logo"
+      ]
     },
     {
       "group": "Blogs",
-      "pages": ["blog/ollama-guide"]
+      "pages": [
+        "blog/ollama-guide",
+        "blog/blinko"
+      ]
     }
   ],
   "footerSocials": {
