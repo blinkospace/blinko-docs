@@ -5,6 +5,12 @@ icon: 'screwdriver-wrench'
 ---
 
 ## Deploy on Railway Directly
+Railway uses Docker containers to deploy Blinko. when you click the "Deploy on Railway" button, Railway will:
+
+1. automatically setup the PostgreSQL database service
+2. configure the necessary environment variables
+3. deploy the latest version of the Blinko Docker image
+
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/InjVjN?referralCode=tZHs0g)
 
 ## Prerequisites
