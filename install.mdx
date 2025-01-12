@@ -11,6 +11,17 @@ icon: 'screwdriver-wrench'
   </Accordion>
 </AccordionGroup>
 
+<Warning>
+**Security Warning**: You must change the `NEXTAUTH_SECRET` value in all installation methods below. Using the default value poses a significant security risk. Generate a strong random string for production use.
+
+Example of generating a secure secret:
+```bash
+openssl rand -base64 32
+# or
+node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+```
+</Warning>
+
 ## Bash Script Installation
 The **install.sh** use docker run to deploy Blinko.If you feel it's not safe, you can use the other method below.
 <AccordionGroup>
@@ -23,7 +34,11 @@ The **install.sh** use docker run to deploy Blinko.If you feel it's not safe, yo
 
 
 ## Docker Installation
-<Warning>Must mount the data volume of **postgres** or your data will be lost</Warning>
+<Warning>
+1. Must mount the data volume of **postgres** or your data will be lost
+2. Replace `NEXTAUTH_SECRET=my_ultra_secure_nextauth_secret` with your own secure secret key
+</Warning>
+
 <AccordionGroup>
   <Accordion icon="chart-network" title="Step 1: Create the custom Docker network" defaultOpen>
     ```bash 
@@ -81,7 +96,9 @@ To deploy Blinko using docker compose, create a docker-compose.yml file with the
           environment:
             NODE_ENV: production
             # NEXTAUTH_URL: http://localhost:1111
+            # IMPORTANT: If you want to use sso, you must set NEXTAUTH_URL to your own domain
             # NEXT_PUBLIC_BASE_URL: http://localhost:1111
+            # IMPORTANT: Replace this with your own secure secret key!
             NEXTAUTH_SECRET: my_ultra_secure_nextauth_secret
             DATABASE_URL: postgresql://postgres:mysecretpassword@postgres:5432/postgres
           depends_on:
