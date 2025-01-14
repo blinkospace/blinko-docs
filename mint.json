@@ -81,7 +81,8 @@
     {
       "group": "Ecosystem",
       "pages": [
-        "ecosystem/blinko-snap"
+        "ecosystem/blinko-snap",
+        "ecosystem/blinko-hub"
       ]
     },
     {
