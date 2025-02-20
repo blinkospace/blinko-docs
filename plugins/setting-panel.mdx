@@ -1,0 +1,426 @@
+---
+title: 'Plugin Settings Panel'
+description: 'Learn how to create and manage plugin settings panel in Blinko'
+---
+
+# Plugin Settings Panel
+
+Each Blinko plugin can have its own settings panel that allows users to customize the plugin's behavior.
+
+## Enable Settings Panel
+
+Set `withSettingPanel = true` in your plugin class to enable the settings panel:
+
+```typescript
+export class MyPlugin extends BasePlugin {
+  // Enable settings panel
+  withSettingPanel = true;
+
+  // Render settings panel
+  renderSettingPanel = () => {
+    const container = document.createElement('div');
+    render(<Setting />, container);
+    return container;
+  };
+}
+```
+
+## Create Settings Component
+
+Create a standalone Preact component to manage the settings interface:
+
+```typescript
+// src/setting.tsx
+import { useState, useEffect } from 'preact/hooks';
+import type { JSXInternal } from 'preact/src/jsx';
+
+/**
+ * Setting component for plugin configuration
+ * Handles API token and notification settings
+ */
+export function Setting(): JSXInternal.Element {
+  const [apiToken, setApiToken] = useState('');
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const i18n = window.Blinko.i18n;
+
+  // Fetch initial plugin configuration on component mount
+  useEffect(() => {
+    window.Blinko.api.config.getPluginConfig.query({
+      pluginName: 'my-note-plugin'
+    }).then((res: any) => {
+      setApiToken(res.apiToken)
+    })
+  }, []);
+
+  /**
+   * Handles saving of plugin settings
+   * Saves API token and closes settings panel
+   */
+  const handleSave = async () => {
+    window.Blinko.toast.success(i18n.t('settingsSaved'));
+    window.Blinko.closeDialog();
+    await window.Blinko.api.config.setPluginConfig.mutate({
+      pluginName: 'my-note-plugin',
+      key: 'apiToken',
+      value: apiToken
+    });
+    window.Blinko.api.config.getPluginConfig.query({
+      pluginName: 'my-note-plugin'
+    });
+  };
+
+  return (
+    <div class="max-w-2xl mx-auto p-2 rounded-lg">
+      {/* API Token Input Section */}
+      <div class="mb-6">
+        <label class="block text-sm font-medium mb-2">
+          {i18n.t('apiTokenLabel')}
+          <input
+            value={apiToken}
+            onChange={(e) => setApiToken(e.currentTarget.value)}
+            placeholder={i18n.t('enterApiToken')}
+            class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm sm:text-sm bg-primary!"
+          />
+        </label>
+      </div>
+
+      {/* Notification Settings Section */}
+      <div class="mb-6">
+        <label class="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            checked={notificationsEnabled}
+            onChange={(e) => setNotificationsEnabled(e.currentTarget.checked)}
+            class="h-4 w-4 text-primary-foreground bg-primary rounded"
+          />
+          <span class="text-sm text-desc">{i18n.t('enableNotifications')}</span>
+        </label>
+      </div>
+
+      {/* Save Button */}
+      <button
+        onClick={handleSave}
+        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md bg-primary text-primary-foreground"
+      >
+        {i18n.t('saveSettings')}
+      </button>
+    </div>
+  );
+}
+```
+
+## Configuration API
+
+Blinko provides a configuration API to save and retrieve plugin settings:
+
+```typescript
+interface ConfigAPI {
+  getPluginConfig: {
+    query: (params: { pluginName: string }) => Promise<any>;
+  };
+  setPluginConfig: {
+    mutate: (params: { 
+      pluginName: string;
+      key: string;
+      value: any;
+    }) => Promise<void>;
+  };
+}
+```
+
+## Using Configuration in Your Plugin
+
+You can access and use these settings in other parts of your plugin:
+
+```typescript
+export class MyPlugin extends BasePlugin {
+  private pluginName = 'my-note-plugin';
+
+  async init() {
+    // Load configuration
+    const config = await window.Blinko.api.config.getPluginConfig.query({
+      pluginName: this.pluginName
+    });
+    
+    // Initialize features based on config
+    if (config.apiToken) {
+      this.initializeAPI(config.apiToken);
+    }
+  }
+
+  private initializeAPI(apiToken: string) {
+    // API initialization logic
+  }
+}
+```
+
+## Best Practices
+
+1. **Type Safety**
+   - Use TypeScript types for your configuration
+   - Define interfaces for your plugin's settings
+
+```typescript
+interface PluginConfig {
+  apiToken: string;
+  notificationsEnabled: boolean;
+}
+
+// Type-safe config access
+const config = await window.Blinko.api.config.getPluginConfig.query<PluginConfig>({
+  pluginName: 'my-note-plugin'
+});
+```
+
+2. **Internationalization**
+   - Use Blinko's i18n system for all text
+   - Provide translations for all settings labels
+
+```typescript
+// i18n usage example
+const i18n = window.Blinko.i18n;
+
+<label>{i18n.t('settings.apiToken.label')}</label>
+<span>{i18n.t('settings.notifications.enable')}</span>
+```
+
+3. **Error Handling**
+   - Handle API errors gracefully
+   - Provide user feedback for actions
+
+```typescript
+const handleSave = async () => {
+  try {
+    await window.Blinko.api.config.setPluginConfig.mutate({
+      pluginName: 'my-note-plugin',
+      key: 'apiToken',
+      value: apiToken
+    });
+    window.Blinko.toast.success(i18n.t('settings.saved'));
+  } catch (error) {
+    window.Blinko.toast.error(i18n.t('settings.saveError'));
+  }
+};
+```
+
+4. **UI/UX Best Practices**
+   - Use consistent styling with Blinko's theme
+   - Provide immediate feedback for user actions
+   - Use appropriate input types and validation
+
+```typescript
+<input
+  type="text"
+  class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+  pattern="[A-Za-z0-9]+"
+  required
+  aria-label={i18n.t('settings.apiToken.label')}
+/>
+```
+
+```typescript
+export class MyPlugin extends BasePlugin {
+  // Enable settings panel
+  withSettingPanel = true;
+
+  // Render settings panel
+  renderSettingPanel = () => {
+    const container = document.createElement('div');
+    render(<Setting />, container);
+    return container;
+  };
+}
+```
+
+## Create Settings Component
+
+Create a standalone Preact component to manage the settings interface:
+
+```typescript
+// src/setting.tsx
+import { useState, useEffect } from 'preact/hooks';
+import type { JSXInternal } from 'preact/src/jsx';
+
+/**
+ * Setting component for plugin configuration
+ * Handles API token and notification settings
+ */
+export function Setting(): JSXInternal.Element {
+  const [apiToken, setApiToken] = useState('');
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const i18n = window.Blinko.i18n;
+
+  // Fetch initial plugin configuration on component mount
+  useEffect(() => {
+    window.Blinko.api.config.getPluginConfig.query({
+      pluginName: 'my-note-plugin'
+    }).then((res: any) => {
+      setApiToken(res.apiToken)
+    })
+  }, []);
+
+  /**
+   * Handles saving of plugin settings
+   * Saves API token and closes settings panel
+   */
+  const handleSave = async () => {
+    window.Blinko.toast.success(i18n.t('settingsSaved'));
+    window.Blinko.closeDialog();
+    await window.Blinko.api.config.setPluginConfig.mutate({
+      pluginName: 'my-note-plugin',
+      key: 'apiToken',
+      value: apiToken
+    });
+    window.Blinko.api.config.getPluginConfig.query({
+      pluginName: 'my-note-plugin'
+    });
+  };
+
+  return (
+    <div class="max-w-2xl mx-auto p-2 rounded-lg">
+      {/* API Token Input Section */}
+      <div class="mb-6">
+        <label class="block text-sm font-medium mb-2">
+          {i18n.t('apiTokenLabel')}
+          <input
+            value={apiToken}
+            onChange={(e) => setApiToken(e.currentTarget.value)}
+            placeholder={i18n.t('enterApiToken')}
+            class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm sm:text-sm bg-primary!"
+          />
+        </label>
+      </div>
+
+      {/* Notification Settings Section */}
+      <div class="mb-6">
+        <label class="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            checked={notificationsEnabled}
+            onChange={(e) => setNotificationsEnabled(e.currentTarget.checked)}
+            class="h-4 w-4 text-primary-foreground bg-primary rounded"
+          />
+          <span class="text-sm text-desc">{i18n.t('enableNotifications')}</span>
+        </label>
+      </div>
+
+      {/* Save Button */}
+      <button
+        onClick={handleSave}
+        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md bg-primary text-primary-foreground"
+      >
+        {i18n.t('saveSettings')}
+      </button>
+    </div>
+  );
+}
+```
+
+## Configuration API
+
+Blinko provides a configuration API to save and retrieve plugin settings:
+
+```typescript
+interface ConfigAPI {
+  getPluginConfig: {
+    query: (params: { pluginName: string }) => Promise<any>;
+  };
+  setPluginConfig: {
+    mutate: (params: { 
+      pluginName: string;
+      key: string;
+      value: any;
+    }) => Promise<void>;
+  };
+}
+```
+
+## Using Configuration in Your Plugin
+
+You can access and use these settings in other parts of your plugin:
+
+```typescript
+export class MyPlugin extends BasePlugin {
+  private pluginName = 'my-note-plugin';
+
+  async init() {
+    // Load configuration
+    const config = await window.Blinko.api.config.getPluginConfig.query({
+      pluginName: this.pluginName
+    });
+    
+    // Initialize features based on config
+    if (config.apiToken) {
+      this.initializeAPI(config.apiToken);
+    }
+  }
+
+  private initializeAPI(apiToken: string) {
+    // API initialization logic
+  }
+}
+```
+
+## Best Practices
+
+1. **Type Safety**
+   - Use TypeScript types for your configuration
+   - Define interfaces for your plugin's settings
+
+```typescript
+interface PluginConfig {
+  apiToken: string;
+  notificationsEnabled: boolean;
+}
+
+// Type-safe config access
+const config = await window.Blinko.api.config.getPluginConfig.query<PluginConfig>({
+  pluginName: 'my-note-plugin'
+});
+```
+
+2. **Internationalization**
+   - Use Blinko's i18n system for all text
+   - Provide translations for all settings labels
+
+```typescript
+// i18n usage example
+const i18n = window.Blinko.i18n;
+
+<label>{i18n.t('settings.apiToken.label')}</label>
+<span>{i18n.t('settings.notifications.enable')}</span>
+```
+
+3. **Error Handling**
+   - Handle API errors gracefully
+   - Provide user feedback for actions
+
+```typescript
+const handleSave = async () => {
+  try {
+    await window.Blinko.api.config.setPluginConfig.mutate({
+      pluginName: 'my-note-plugin',
+      key: 'apiToken',
+      value: apiToken
+    });
+    window.Blinko.toast.success(i18n.t('settings.saved'));
+  } catch (error) {
+    window.Blinko.toast.error(i18n.t('settings.saveError'));
+  }
+};
+```
+
+4. **UI/UX Best Practices**
+   - Use consistent styling with Blinko's theme
+   - Provide immediate feedback for user actions
+   - Use appropriate input types and validation
+
+```typescript
+<input
+  type="text"
+  class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+  pattern="[A-Za-z0-9]+"
+  required
+  aria-label={i18n.t('settings.apiToken.label')}
+/>
+```

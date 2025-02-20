@@ -1,0 +1,103 @@
+---
+title: 'Publishing Your Plugin'
+description: 'When your plugin is ready for release, you can publish it to the Blinko Plugin Marketplace. This guide will walk you through the process of preparing and publishing your plugin.
+'
+---
+
+## Prerequisites
+
+Before publishing, ensure you have:
+- A complete and tested plugin
+- A public GitHub repository
+- A valid GitHub account
+- Github Cli installed [Github Cli](https://cli.github.com/)
+
+## Publishing Process
+
+### 1. Prepare Your Plugin
+
+Before publishing, make sure your plugin meets all requirements:
+
+1. Update your `plugin.json` with the latest version number
+2. Ensure all required fields in `plugin.json` are filled:
+   ```json
+   {
+     "name": "your-plugin-name",
+     "author": "your-name",
+     "url": "https://github.com/your-username/your-plugin",
+     "version": "1.0.0",
+     "minAppVersion": "0.0.0",
+     "displayName": {
+       "default": "Your Plugin Name",
+       "zh": "你的插件名称"
+     },
+     "description": {
+       "default": "Your plugin description",
+       "zh": "你的插件描述"
+     }
+   }
+   ```
+
+3. Test your plugin thoroughly
+4. Commit and push all changes to GitHub
+
+### 2. Run the Publish Command
+
+The template provides a simple command to handle the release process:
+
+```bash
+bun release:publish
+```
+
+This command will:
+1. Build your plugin for production
+2. Create a release package (`release.zip`)
+3. Create a GitHub release with the package
+4. Submit your plugin to the [Blinko Plugin Marketplace](https://github.com/blinko-space/blinko-plugin-marketplace)
+
+### 3. Behind the Scenes
+
+The `release:publish` command uses [blinko-cli](https://github.com/blinko-space/blinko-cli) to handle the release process. Here's what happens:
+
+1. The CLI validates your `plugin.json` and ensures all required fields are present
+2. It packages your plugin's `release` directory into a ZIP file
+3. Using GitHub's API, it creates a new release with your version number
+4. The release package is uploaded to the GitHub release
+5. An issue is created in the Blinko Plugin Marketplace repository to request publication
+
+### 4. After Publishing
+
+After running the publish command:
+1. A new issue will be created in the [Blinko Plugin Marketplace](https://github.com/blinko-space/blinko-plugin-marketplace)
+2. The Blinko team will review your plugin
+3. Once approved, your plugin will be available in the marketplace
+<img className="rounded-2xl" src="/images/2025-02-20-16-14-16.png" />
+4. You can track the status of your submission through the GitHub issue
+
+## Troubleshooting
+
+### Common Issues
+
+1. GitHub Authentication
+   - Ensure you have proper GitHub credentials configured
+   - Check your repository permissions
+
+2. Version Number Issues
+   - Make sure your version follows semantic versioning (e.g., 1.0.0)
+   - Version number must be higher than previous releases
+
+3. Release Package Problems
+   - Verify your release directory contains all necessary files
+   - Check that the ZIP file was created successfully
+
+4. Repository Access
+   - Confirm your repository is public
+   - Verify the repository URL in `plugin.json` is correct
+
+
+## Need Help?
+
+If you encounter any issues or need assistance:
+- Check our [community forums](/community/community)
+- Open an issue in the [blinko-cli repository](https://github.com/blinko-space/blinko-cli)
+- Review existing issues in the [marketplace repository](https://github.com/blinko-space/blinko-plugin-marketplace) 

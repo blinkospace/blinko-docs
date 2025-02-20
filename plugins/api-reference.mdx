@@ -1,0 +1,144 @@
+---
+title: 'Plugin API Reference'
+description: 'Complete reference for Blinko Plugin API'
+---
+
+## Global API
+
+Blinko exposes a global API through the `window.Blinko` object:
+
+```typescript
+interface Window {
+  Blinko: {
+    // Core APIs
+    api: typeof api;              // TRPC API client
+    eventBus: typeof eventBus;    // Event system
+    i18n: typeof i18n;           // Internationalization
+    version: string;             // Blinko version
+    toast: ToastPlugin;          // Toast notifications
+    
+    // Store Access
+    store: {
+      StorageState: typeof StorageState;
+      PromiseState: typeof PromiseState;
+      PromisePageState: typeof PromisePageState;
+      blinkoStore: BlinkoStore;
+      baseStore: BaseStore;
+      hubStore: HubStore;
+      resourceStore: ResourceStore;
+    };
+    
+    // Utility Functions
+    globalRefresh: () => void;    // Refresh application
+  } & PluginApiStore;  // Plugin API methods
+}
+```
+
+
+## Store
+`window.Blinko.store`
+
+The store provides a set of methods and interfaces for extending Blinko's functionality [Store](/plugins/store).
+
+## Plugin API Store
+`window.Blinko.api`
+
+
+For detailed API documentation, including all available endpoints and methods, please refer to the [official Blinko API documentation](https://blinko.apidocumentation.com/reference).
+
+### Toolbar Icons
+`window.Blinko.addToolBarIcon`
+
+Add custom icons to the toolbar with tooltips and click actions.
+
+```typescript
+type ToolbarIcon = {
+  name: string;          // Unique identifier for the icon
+  icon: string;          // Icon name or URL
+  tooltip: string;       // Tooltip text shown on hover
+  content: () => HTMLElement;  // Content to show when clicked
+  placement?: 'top' | 'bottom' | 'left' | 'right';  // Tooltip placement
+  maxWidth?: number;     // Maximum width of the content
+};
+
+// Example usage
+window.Blinko.addToolBarIcon({
+  name: 'my-custom-tool',
+  icon: 'settings',
+  tooltip: 'My Custom Tool',
+  content: () => {
+    const div = document.createElement('div');
+    div.innerHTML = 'Custom tool content';
+    return div;
+  },
+  placement: 'bottom',
+  maxWidth: 300
+});
+```
+
+### Right-Click Menu
+`window.Blinko.addRightClickMenu`
+
+Add custom items to the note right-click context menu.
+
+```typescript
+type RightClickMenu = {
+  name: string;          // Unique identifier for the menu item
+  label: string;         // Display text
+  icon?: string;         // Optional icon
+  onClick: (note: Note) => void;  // Click handler
+  disabled?: boolean;    // Whether the item is disabled
+};
+
+// Example usage
+window.Blinko.addRightClickMenu({
+  name: 'my-menu-item',
+  label: 'My Custom Action',
+  icon: 'star',
+  onClick: (note) => {
+    console.log('Clicked on note:', note);
+  }
+});
+```
+
+### Custom Dialogs
+`window.Blinko.showDialog`
+
+Show custom dialog windows with your content.
+
+```typescript
+type DialogOptions = {
+  title: string;         // Dialog title
+  content: () => HTMLElement;  // Dialog content
+};
+
+// Example usage
+window.Blinko.showDialog({
+  title: 'My Custom Dialog',
+  content: () => {
+    const div = document.createElement('div');
+    div.innerHTML = 'Custom dialog content';
+    return div;
+  }
+});
+
+// Close the dialog
+window.Blinko.closeDialog();
+```
+
+### AI Writing Prompts
+`window.Blinko.addAiWritePrompt`
+Add custom AI writing prompts to the AI writing feature.
+
+```typescript
+// Add a custom AI writing prompt
+window.Blinko.addAiWritePrompt(
+  'My Custom Prompt',    // Name
+  'Write about...',      // Prompt text
+  'magic-wand'           // Optional icon
+);
+```
+
+## Type Definitions
+
+For detailed type information, you can refer to the [type definitions on GitHub](https://github.com/blinko-space/blinko/tree/main/types).

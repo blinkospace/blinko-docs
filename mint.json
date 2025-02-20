@@ -32,6 +32,10 @@
     {
       "name": "Blog",
       "url": "blog"
+    },
+    {
+      "name": "Plugins",
+      "url": "plugins"
     }
   ],
   "primaryTab": {
@@ -111,6 +115,16 @@
         "brand/logo"
       ]
     },
+    {
+      "group": "Plugins",
+      "pages": [
+        "plugins/get-started",
+        "plugins/publish-plugin",
+        "plugins/api-reference",
+        "plugins/store",
+        "plugins/setting-panel"
+      ]
+    },  
     {
       "group": "Blogs",
       "pages": [
