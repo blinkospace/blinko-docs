@@ -48,49 +48,6 @@ settings.subscribe((newSettings) => {
 });
 ```
 
-### PromiseState
-For managing async operation states.
-
-```typescript
-class PromiseState<T> {
-  // State
-  loading: boolean;    // Whether operation is in progress
-  data?: T;           // Operation result
-  error?: Error;      // Operation error if any
-  
-  // Actions
-  execute(): Promise<T>;  // Trigger the operation
-}
-
-// Example usage
-const noteDetail = window.Blinko.store.blinkoStore.notes.detail;
-await noteDetail.execute();
-if (noteDetail.data) {
-  console.log('Note loaded:', noteDetail.data);
-}
-```
-
-### PromisePageState
-For managing paginated async data.
-
-```typescript
-class PromisePageState<T> extends PromiseState<T> {
-  // Pagination state
-  page: number;      // Current page
-  hasMore: boolean;  // Whether more data is available
-  
-  // Actions
-  loadMore(): Promise<void>;  // Load next page
-  refresh(): Promise<void>;   // Refresh current data
-}
-
-// Example usage
-const notesList = window.Blinko.store.blinkoStore.notes.list;
-await notesList.execute();  // Load first page
-if (notesList.hasMore) {
-  await notesList.loadMore();  // Load next page
-}
-```
 
 ## Store Instances
 
