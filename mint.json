@@ -54,7 +54,8 @@
       "pages": [
         "introduction",
         "install",
-        "update"
+        "update",
+        "changelog"
       ]
     },
     {
