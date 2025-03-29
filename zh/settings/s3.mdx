@@ -1,0 +1,42 @@
+---
+title: 'S3存储'
+description: '配置S3存储'
+icon: 'server'
+---
+
+<img className="rounded-2xl" src="/images/2024-11-30-10-59-32.png" />
+
+<AccordionGroup>
+  <Accordion icon="key" title="步骤1：了解关键字段" defaultOpen>
+    - **Access Key ID**：S3凭据的唯一标识符
+    - **Access Key Secret**：与访问密钥配对用于身份验证的密钥
+    - **Endpoint**：S3兼容服务的URL（例如，AWS S3，MinIO）
+    - **Region**：托管您S3存储桶的地理位置
+    - **Bucket**：存储文件的特定存储容器名称
+  </Accordion>
+
+  <Accordion icon="bucket" title="步骤2：创建S3存储桶">
+    1. 登录您的对象存储提供商（AWS、MinIO或类似服务）
+    2. 创建存储桶：
+       - 导航至存储服务
+       - 选择创建存储桶选项
+       - 定义唯一名称和区域
+       - 根据需要调整权限和设置
+  </Accordion>
+
+  <Accordion icon="key-skeleton" title="步骤3：生成访问密钥">
+    1. 访问安全部分（通常在AWS的"IAM"下）
+    2. 创建访问凭据：
+       - 生成Access Key ID和Secret Access Key
+       - 安全存储这些凭据以用于配置
+  </Accordion>
+
+  <Accordion icon="link" title="步骤4：配置端点并测试">
+    1. 设置端点：
+       - AWS用户：`https://s3.<region>.amazonaws.com`
+       - 其他提供商：查看提供商文档获取端点URL
+    2. 测试配置：
+       - 验证与S3存储的连接
+       - 执行测试上传/下载以确认功能
+  </Accordion>
+</AccordionGroup>

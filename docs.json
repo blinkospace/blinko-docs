@@ -1,0 +1,248 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "linden",
+  "name": "Blinko",
+  "search": {
+    "prompt": "Search Blinko..."
+  },
+  "colors": {
+    "primary": "#FF5522",
+    "light": "#FF5522",
+    "dark": "#FF5522"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "API Documentation",
+          "href": "https://blinko.apidocumentation.com/",
+          "icon": "book-open-cover"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "language": "en",
+        "tabs": [
+          {
+            "tab": "Guides",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "en/introduction",
+                  "en/install",
+                  "en/update",
+                  "en/changelog"
+                ]
+              },
+              {
+                "group": "How to use",
+                "pages": [
+                  {
+                    "group": "AI",
+                    "icon": "robot",
+                    "pages": [
+                      "en/how-to-use/ai/ai-setting",
+                      "en/how-to-use/ai/ai-chat",
+                      "en/how-to-use/ai/ai-writing",
+                      "en/how-to-use/ai/ai-tag",
+                      "en/how-to-use/ai/ai-emoji",
+                      "en/how-to-use/ai/ai-search"
+                    ]
+                  },
+                  "en/how-to-use/blinko-or-note",
+                  "en/how-to-use/toolbar",
+                  "en/how-to-use/music",
+                  "en/how-to-use/tags",
+                  "en/how-to-use/daily-review",
+                  "en/how-to-use/share-your-note",
+                  "en/how-to-use/article-view",
+                  "en/how-to-use/rss"
+                ]
+              },
+              {
+                "group": "Ecosystem",
+                "pages": [
+                  "en/ecosystem/blinko-snap",
+                  "en/ecosystem/blinko-hub",
+                  "en/ecosystem/blinko-plugin"
+                ]
+              },
+              {
+                "group": "Settings",
+                "pages": [
+                  "en/settings/s3",
+                  "en/settings/access-token",
+                  "en/settings/task",
+                  "en/settings/preference",
+                  "en/settings/webhook",
+                  "en/settings/sso",
+                  "en/settings/link-account"
+                ]
+              },
+              {
+                "group": "Community",
+                "pages": [
+                  "en/ecosystem/blinko-snap",
+                  "en/ecosystem/blinko-hub",
+                  "en/ecosystem/blinko-plugin"
+                ]
+              },
+              {
+                "group": "Brand",
+                "pages": [
+                  "brand/logo"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Blogs",
+            "pages": [
+              "en/blog/blinko",
+              "en/blog/ollama-guide"
+            ]
+          },
+          {
+            "tab": "Plugins",
+            "pages": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "plugins/get-started",
+                  "plugins/publish-plugin",
+                  "plugins/api-reference",
+                  "plugins/store",
+                  "plugins/setting-panel"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "zh",
+        "tabs": [
+          {
+            "tab": "指南",
+            "groups": [
+              {
+                "group": "开始使用",
+                "pages": [
+                  "zh/introduction",
+                  "zh/install",
+                  "zh/update",
+                  "zh/changelog"
+                ]
+              },
+              {
+                "group": "如何使用",
+                "pages": [
+                  {
+                    "group": "AI",
+                    "icon": "robot",
+                    "pages": [
+                      "zh/how-to-use/ai/ai-setting",
+                      "zh/how-to-use/ai/ai-chat",
+                      "zh/how-to-use/ai/ai-writing",
+                      "zh/how-to-use/ai/ai-tag",
+                      "zh/how-to-use/ai/ai-emoji",
+                      "zh/how-to-use/ai/ai-search"
+                    ]
+                  },
+                  "zh/how-to-use/blinko-or-note",
+                  "zh/how-to-use/toolbar",
+                  "zh/how-to-use/music",
+                  "zh/how-to-use/tags",
+                  "zh/how-to-use/daily-review",
+                  "zh/how-to-use/share-your-note",
+                  "zh/how-to-use/article-view",
+                  "zh/how-to-use/rss"
+                ]
+              },
+              {
+                "group": "生态",
+                "pages": [
+                  "zh/ecosystem/blinko-snap",
+                  "zh/ecosystem/blinko-hub",
+                  "zh/ecosystem/blinko-plugin"
+                ]
+              },
+              {
+                "group": "设置",
+                "pages": [
+                  "zh/settings/s3",
+                  "zh/settings/access-token",
+                  "zh/settings/task",
+                  "zh/settings/preference",
+                  "zh/settings/webhook",
+                  "zh/settings/sso",
+                  "zh/settings/link-account"
+                ]
+              },
+              {
+                "group": "社区",
+                "pages": [
+                  "zh/community/community",
+                  "zh/community/development",
+                  "zh/community/doc"
+                ]
+              },
+              {
+                "group": "品牌",
+                "pages": [
+                  "brand/logo"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "博客",
+            "pages": [
+              "zh/blog/blinko",
+              "zh/blog/ollama-guide"
+            ]
+          },
+          {
+            "tab": "插件",
+            "pages": [
+              {
+                "group": "开始使用",
+                "pages": [
+                  "zh/plugins/get-started",
+                  "zh/plugins/publish-plugin",
+                  "zh/plugins/api-reference",
+                  "zh/plugins/store",
+                  "zh/plugins/setting-panel"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/logo-light-4000x1400.png",
+    "dark": "/logo/logo-dark-4000x1400.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Demo Site",
+        "href": "https://demo.blinko.space"
+      }
+    ],
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/blinko-space/blinko"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/blinko-space"
+    }
+  }
+}

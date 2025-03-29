@@ -1,0 +1,111 @@
+---
+title: '使用Ollama'
+description: '使用Ollama作为私有AI解决方案的全面指南'
+icon: 'microchip-ai'
+---
+
+## 为什么选择Ollama？
+
+<AccordionGroup>
+  <Accordion icon="lock" title="隐私优势" defaultOpen>
+    - **本地处理**：所有计算在您的设备上进行
+    - **数据控制**：您的信息永不离开您的系统
+    - **无云依赖**：无需互联网连接即可工作
+    - **经济实惠**：没有API使用费
+  </Accordion>
+
+  <Accordion icon="server" title="技术优势">
+    - **可定制**：根据您的需求微调模型
+    - **开源**：透明且社区驱动
+    - **资源高效**：针对桌面使用优化
+    - **易于集成**：简单的API接口
+  </Accordion>
+</AccordionGroup>
+
+## 流行的Ollama模型
+
+<AccordionGroup>
+  <Accordion icon="star" title="通用模型">
+    - **Llama2**：Meta强大的开源模型
+      - 变体：7B、13B、70B
+      - 性能和资源使用的良好平衡
+    
+    - **Mistral**：卓越的性能与尺寸比
+      - 强大的推理能力
+      - 高效的7B参数模型
+    
+    - **Neural Chat**：针对对话任务优化
+      - 自然对话流程
+      - 良好的上下文理解
+  </Accordion>
+</AccordionGroup>
+
+## 理解嵌入模型
+
+<Note>
+嵌入模型将文本转换为数值向量，实现：
+- 语义搜索能力
+- 内容相似性匹配
+- 上下文感知响应
+</Note>
+
+### 常见嵌入模型
+
+<AccordionGroup>
+  <Accordion icon="microchip" title="可用选项">
+    - **Nomic-Embed**：高效的通用嵌入
+    - **BGE-Embed**：强大的多语言支持
+    - **MXBAI-Embed**：针对亚洲语言优化
+  </Accordion>
+</AccordionGroup>
+
+## RAG（检索增强生成）
+
+<AccordionGroup>
+  <Accordion icon="diagram-project" title="RAG工作原理" defaultOpen>
+    1. **文档处理**：
+       - 文本被分割成块
+       - 块被转换为嵌入
+       - 嵌入存储在向量数据库中
+    
+    2. **查询处理**：
+       - 用户查询被转换为嵌入
+       - 检索相似文档
+       - 向LLM提供上下文
+    
+    3. **响应生成**：
+       - LLM使用检索的上下文生成响应
+       - 确保准确性和相关性
+  </Accordion>
+</AccordionGroup>
+
+## 高级设置
+[Ollama设置](/how-to-use/ai/ai-setting#advanced)
+
+
+## 最佳实践
+
+<Warning>
+考虑您的硬件能力：
+- 大型模型需要更多RAM
+- GPU加速提升性能
+- 建议使用SSD存储嵌入
+</Warning>
+
+<Note>
+为获得最佳结果：
+- 将模型文件存储在快速存储设备上
+- 定期更新嵌入索引
+- 监控响应质量
+- 逐步调整参数
+</Note>
+
+## 开始使用
+
+1. [安装Ollama](https://ollama.com/)
+2. 选择适当的模型
+3. 配置嵌入设置
+4. 使用示例查询测试
+5. 根据需要微调参数
+<img className="rounded-2xl" src="/images/2024-12-10-09-54-36.png" />
+通过遵循本指南，您可以建立一个私有、高效的AI工作流程，同时保持对数据和流程的完全控制。 

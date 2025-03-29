@@ -1,0 +1,164 @@
+---
+title: '安装'
+description: '5分钟内开始安装Blinko'
+icon: 'screwdriver-wrench'
+---
+
+## 直接在PikaPods上部署
+
+PIKAPODS起价每月最低1.5美元。
+此外，PIKAPODS将为所有新用户提供5美元的体验金！并且从PIKAPODS部署产生的费用中的20%将捐赠给Blinko。快来支持我们吧！
+
+[![Run on PikaPods](https://www.pikapods.com/static/run-button.svg)](https://www.pikapods.com/pods?run=blinko)
+
+
+## 先决条件
+<AccordionGroup>
+  <Accordion icon="docker" title="Docker">
+    运行Blinko需要Docker。访问[Docker](https://www.docker.com/)安装Docker。
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+**安全警告**：您必须在下面所有安装方法中更改`NEXTAUTH_SECRET`值。使用默认值会带来重大安全风险。为生产环境生成一个强随机字符串。
+
+生成安全密钥的示例：
+```bash
+openssl rand -base64 32
+# 或
+node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+```
+</Warning>
+
+## Bash脚本安装
+**install.sh**使用docker run来部署Blinko。如果您认为这不安全，可以使用下面的其他方法。
+<AccordionGroup>
+  <Accordion icon="square-terminal" title="install.sh">
+    ```bash 
+    curl -o install.sh https://raw.githubusercontent.com/blinko-space/blinko/main/install.sh && bash install.sh
+    ```
+  </Accordion>
+</AccordionGroup>
+
+
+## Docker安装
+<Warning>
+1. 必须挂载**postgres**的数据卷，否则您的数据将丢失
+2. 将`NEXTAUTH_SECRET=my_ultra_secure_nextauth_secret`替换为您自己的安全密钥
+</Warning>
+
+<AccordionGroup>
+  <Accordion icon="chart-network" title="步骤1：创建自定义Docker网络" defaultOpen>
+    ```bash 
+    docker network create blinko-network
+    ```
+  </Accordion>
+  <Accordion icon="database" title="步骤2：运行PostgreSQL数据库容器" defaultOpen>
+    ```bash 
+   docker run -d \
+    --name blinko-postgres \
+    --network blinko-network \
+    -v <your-path>:/var/lib/postgresql/data \
+    -p 5435:5432 \
+    -e POSTGRES_DB=postgres \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_PASSWORD=mysecretpassword \
+    -e TZ=Asia/Shanghai \
+    --restart always \
+    postgres:14
+    ```
+  </Accordion>
+   <Accordion icon="ghost" title="步骤3：运行Blinko网站容器" defaultOpen>
+    ```bash 
+    docker run -d \
+    --name blinko-website \
+    --network blinko-network \
+    -v <your-path>:/app/.blinko \
+    -p 1111:1111 \
+    -e NODE_ENV=production \
+    -e NEXTAUTH_URL=http://localhost:1111 \
+    -e NEXT_PUBLIC_BASE_URL=http://localhost:1111 \
+    -e NEXTAUTH_SECRET=my_ultra_secure_nextauth_secret \
+    -e DATABASE_URL=postgresql://postgres:mysecretpassword@blinko-postgres:5432/postgres \
+    --restart always \
+    blinkospace/blinko:latest
+    ```
+  </Accordion>
+</AccordionGroup>
+
+
+
+### Docker Compose安装
+要使用docker compose部署Blinko，请创建一个docker-compose.yml文件，配置如下：
+<AccordionGroup>
+  <Accordion icon="docker" title="步骤1：创建docker-compose.yml" >
+    ```yml
+      networks:
+        blinko-network:
+          driver: bridge
+
+      services:
+        blinko-website:
+          image: blinkospace/blinko:latest
+          container_name: blinko-website
+          environment:
+            NODE_ENV: production
+            # NEXTAUTH_URL: http://localhost:1111
+            # IMPORTANT: If you want to use sso, you must set NEXTAUTH_URL to your own domain
+            # NEXT_PUBLIC_BASE_URL: http://localhost:1111
+            # IMPORTANT: Replace this with your own secure secret key!
+            NEXTAUTH_SECRET: my_ultra_secure_nextauth_secret
+            DATABASE_URL: postgresql://postgres:mysecretpassword@postgres:5432/postgres
+          depends_on:
+            postgres:
+              condition: service_healthy
+          # Make sure you have enough permissions.
+          # volumes:
+            # - ~/your-name/.blinko:/app/.blinko 
+          restart: always
+          logging:
+            options:
+              max-size: "10m"
+              max-file: "3"
+          ports:
+            - 1111:1111
+          healthcheck:
+            test: ["CMD", "curl", "-f", "http://blinko-website:1111/"]
+            interval: 30s 
+            timeout: 10s   
+            retries: 5     
+            start_period: 30s 
+          networks:
+            - blinko-network
+
+        postgres:
+          image: postgres:14
+          container_name: blinko-postgres
+          restart: always
+          ports:
+            - 5435:5432
+          environment:
+            POSTGRES_DB: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: mysecretpassword
+            TZ: Asia/Shanghai
+          # Persisting container data
+          # Make sure you have enough permissions.
+          # volumes:
+            # - ~/your-name/.db:/var/lib/postgresql/data
+          healthcheck:
+            test:
+              ["CMD", "pg_isready", "-U", "postgres", "-d", "postgres"]
+            interval: 5s
+            timeout: 10s
+            retries: 5
+          networks:
+            - blinko-network
+    ```
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="步骤2：执行docker-compose命令启动Blinko">
+    ```bash
+    docker-compose -f docker-compose.yml up -d
+    ```
+  </Accordion>
+</AccordionGroup>

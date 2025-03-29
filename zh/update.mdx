@@ -1,0 +1,31 @@
+---
+title: "更新"
+description: "如何更新Blinko？"
+icon: "circle-up"
+---
+
+## Bash脚本更新
+<AccordionGroup>
+  <Accordion icon="square-terminal" title="update.sh" defaultOpen>
+    ```bash 
+    curl -o update.sh https://raw.githubusercontent.com/blinko-space/blinko/refs/heads/main/update.sh && bash update.sh
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Watchtower
+<Warning>不要将**postgres**添加到watchtower，否则您的数据将丢失</Warning>
+<AccordionGroup>
+  <Accordion icon="square-terminal" title="Watchtower" defaultOpen>
+```bash
+docker run -d \
+ --name watchtower \
+ --network=bridge \
+ --restart=always \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -w / \
+ containrrr/watchtower blinko-website --cleanup -i 3600
+```
+  </Accordion>
+</AccordionGroup>
+

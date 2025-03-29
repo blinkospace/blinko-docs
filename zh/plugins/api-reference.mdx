@@ -1,0 +1,145 @@
+---
+title: '插件API参考'
+description: 'Blinko插件API完整参考'
+icon: "microchip-ai"
+---
+
+## 全局API
+
+Blinko通过`window.Blinko`对象暴露全局API：
+
+```typescript
+interface Window {
+  Blinko: {
+    // 核心API
+    api: typeof api;              // TRPC API客户端
+    eventBus: typeof eventBus;    // 事件系统
+    i18n: typeof i18n;           // 国际化
+    version: string;             // Blinko版本
+    toast: ToastPlugin;          // 提示通知
+    
+    // 存储访问
+    store: {
+      StorageState: typeof StorageState;
+      PromiseState: typeof PromiseState;
+      PromisePageState: typeof PromisePageState;
+      blinkoStore: BlinkoStore;
+      baseStore: BaseStore;
+      hubStore: HubStore;
+      resourceStore: ResourceStore;
+    };
+    
+    // 实用函数
+    globalRefresh: () => void;    // 刷新应用
+  } & PluginApiStore;  // 插件API方法
+}
+```
+
+
+## 存储
+`window.Blinko.store`
+
+存储提供了一组用于扩展Blinko功能的方法和接口 [存储](/plugins/store)。
+
+## 插件API存储
+`window.Blinko.api`
+
+
+有关详细的API文档，包括所有可用的端点和方法，请参阅[Blinko官方API文档](https://blinko.apidocumentation.com/reference)。
+
+### 工具栏图标
+`window.Blinko.addToolBarIcon`
+
+添加带有工具提示和点击操作的自定义图标到工具栏。
+
+```typescript
+type ToolbarIcon = {
+  name: string;          // 图标的唯一标识符
+  icon: string;          // 图标名称或URL
+  tooltip: string;       // 悬停时显示的工具提示文本
+  content: () => HTMLElement;  // 点击时显示的内容
+  placement?: 'top' | 'bottom' | 'left' | 'right';  // 工具提示位置
+  maxWidth?: number;     // 内容的最大宽度
+};
+
+// 使用示例
+window.Blinko.addToolBarIcon({
+  name: 'my-custom-tool',
+  icon: 'settings',
+  tooltip: 'My Custom Tool',
+  content: () => {
+    const div = document.createElement('div');
+    div.innerHTML = 'Custom tool content';
+    return div;
+  },
+  placement: 'bottom',
+  maxWidth: 300
+});
+```
+
+### 右键菜单
+`window.Blinko.addRightClickMenu`
+
+添加自定义项目到笔记右键上下文菜单。
+
+```typescript
+type RightClickMenu = {
+  name: string;          // 菜单项的唯一标识符
+  label: string;         // 显示文本
+  icon?: string;         // 可选图标
+  onClick: (note: Note) => void;  // 点击处理器
+  disabled?: boolean;    // 菜单项是否禁用
+};
+
+// 使用示例
+window.Blinko.addRightClickMenu({
+  name: 'my-menu-item',
+  label: 'My Custom Action',
+  icon: 'star',
+  onClick: (note) => {
+    console.log('Clicked on note:', note);
+  }
+});
+```
+
+### 自定义对话框
+`window.Blinko.showDialog`
+
+显示带有您内容的自定义对话框窗口。
+
+```typescript
+type DialogOptions = {
+  title: string;         // 对话框标题
+  content: () => HTMLElement;  // 对话框内容
+};
+
+// 使用示例
+window.Blinko.showDialog({
+  title: 'My Custom Dialog',
+  content: () => {
+    const div = document.createElement('div');
+    div.innerHTML = 'Custom dialog content';
+    return div;
+  }
+});
+
+// 关闭对话框
+window.Blinko.closeDialog();
+```
+
+### AI写作提示
+`window.Blinko.addAiWritePrompt`
+向AI写作功能添加自定义AI写作提示。
+
+```typescript
+// 添加自定义AI写作提示
+window.Blinko.addAiWritePrompt(
+  'My Custom Prompt',    // 名称
+  'Write about...',      // 提示文本
+  'magic-wand'           // 可选图标
+);
+```
+
+## 类型定义
+
+有关详细的类型信息，您可以参考[GitHub上的类型定义](https://github.com/blinko-space/blinko/tree/main/types)。

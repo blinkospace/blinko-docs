@@ -1,0 +1,122 @@
+---
+title: '存储系统'
+description: 'Blinko提供强大的存储系统用于状态管理。您可以通过`window.Blinko.store`访问它。'
+icon: "store"
+---
+
+## 存储结构
+
+```typescript
+interface Window {
+  Blinko: {
+    store: {
+      // 基础存储类型
+      StorageState: typeof StorageState;        // 持久化存储状态
+      PromiseState: typeof PromiseState;        // 异步操作状态
+      PromisePageState: typeof PromisePageState;  // 分页异步状态
+      
+      // 存储实例
+      blinkoStore: BlinkoStore;    // 核心功能存储
+      baseStore: BaseStore;        // 基础应用存储
+      hubStore: HubStore;          // 同步和连接存储
+      resourceStore: ResourceStore; // 资源管理存储
+    }
+  }
+}
+```
+
+## 基础存储类型
+
+### StorageState
+用于管理具有订阅支持的持久化状态。
+
+```typescript
+class StorageState<T> {
+  // 获取当前值
+  get(): T;
+  
+  // 更新值
+  set(value: T): void;
+  
+  // 订阅变更
+  subscribe(callback: (value: T) => void): () => void;
+}
+
+// 使用示例
+const settings = window.Blinko.store.blinkoStore.settings;
+settings.subscribe((newSettings) => {
+  console.log('Settings changed:', newSettings);
+});
+```
+
+
+## 存储实例
+
+### BlinkoStore
+笔记、标签和设置的核心功能存储。
+
+```typescript
+interface BlinkoStore {
+  notes: {
+    list: PromisePageState<Note[]>;
+    detail: PromiseState<Note>;
+    // ... 其他笔记操作
+  };
+  tags: {
+    list: PromiseState<Tag[]>;
+    // ... 标签操作
+  };
+  settings: StorageState<Settings>;
+  // ... 其他核心功能
+}
+```
+
+### BaseStore
+基础应用存储，用于基本操作。
+
+```typescript
+interface BaseStore {
+  // 应用状态
+  initialized: boolean;
+  loading: boolean;
+  
+  // 用户会话
+  session: StorageState<Session>;
+  
+  // 核心操作
+  initialize(): Promise<void>;
+  reset(): Promise<void>;
+}
+```
+
+### HubStore
+管理同步和连接。
+
+```typescript
+interface HubStore {
+  // 连接状态
+  connected: boolean;
+  connecting: boolean;
+  
+  // 同步操作
+  sync(): Promise<void>;
+  connect(): Promise<void>;
+  disconnect(): Promise<void>;
+}
+```
+
+### ResourceStore
+处理文件和资源管理。
+
+```typescript
+interface ResourceStore {
+  // 资源操作
+  upload(file: File): Promise<string>;
+  download(url: string): Promise<Blob>;
+  delete(url: string): Promise<void>;
+  
+  // 资源信息
+  getInfo(url: string): Promise<ResourceInfo>;
+  list(): Promise<ResourceInfo[]>;
+}
+```

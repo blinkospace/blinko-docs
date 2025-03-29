@@ -1,0 +1,87 @@
+---
+title: 'Webhook设置'
+description: '配置和管理用于实时通知的webhooks'
+icon: 'webhook'
+---
+
+## 概述
+
+Webhooks允许您在应用程序中发生特定事件时接收实时通知。本指南解释如何有效配置和管理webhooks。
+
+## 设置Webhooks
+
+<AccordionGroup>
+  <Accordion icon="plus" title="创建Webhook" defaultOpen>
+    1. 导航至设置 > Webhook
+    2. 输入以下详细信息：
+       - Webhook URL
+  </Accordion>
+</AccordionGroup>
+
+## 事件类型
+
+<AccordionGroup>
+  <Accordion icon="bell" title="可用事件">
+    - 笔记创建
+    - 笔记更新
+    - 笔记删除
+  </Accordion>
+
+  <Accordion icon="code" title="载荷格式">
+    ```json
+    {
+      "webhookType": "user.create",
+      "activityType": "blinko.note.update",
+      "data": {
+        "id": 0,
+        "type": 0,
+        "isArchived": false,
+        "isRecycle": false,
+        "content": "",
+        "isShare": false,
+        "isTop": false,
+        "isReviewed": false,
+        "sharePassword": "",
+        "metadata": null,
+        "accountId": null,
+        "createdAt": "2024-03-21T00:00:00Z",
+        "updatedAt": "2024-03-21T00:00:00Z",
+        "attachments": [
+          {
+            "id": 0,
+            "name": "",
+            "path": "",
+            "type": "",
+            "size": "0",
+            "isShare": false,
+            "sharePassword": "",
+            "createdAt": "2024-03-21T00:00:00Z",
+            "updatedAt": "2024-03-21T00:00:00Z",
+            "noteId": 0
+          }
+        ]
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## 安全
+
+<AccordionGroup>
+  <Accordion icon="shield" title="最佳实践">
+    - 仅使用HTTPS端点
+    - 实施签名验证
+    - 设置IP白名单
+    - 监控webhook活动
+    - 配置超时设置
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+Webhook事件实时传递，但在高流量期间可能会延迟。
+</Note>
+
+<Warning>
+始终备份您的webhook配置，并为关键事件维护备用通知方法。
+</Warning>

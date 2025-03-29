@@ -1,0 +1,64 @@
+---
+title: 'RSS订阅'
+description: '通过RSS订阅公开笔记'
+icon: 'rss'
+---
+
+# RSS订阅集成
+
+Blinko为公开笔记提供RSS订阅支持，让您能够通过您喜爱的RSS阅读器获取最新内容更新。
+
+<img className="rounded-2xl" src="/images/2025-01-08-14-47-32.png" />
+
+## 订阅源可用性
+
+Blinko和笔记将在满足以下条件时自动包含在RSS订阅源中：
+- 设置为公开
+- 没有密码保护
+
+## 订阅源格式
+
+Blinko支持两种标准RSS订阅格式：
+
+### 1. Atom订阅源
+```
+/api/rss/{userId}/atom?row=20
+```
+
+### 2. RSS订阅源
+```
+/api/rss/{userId}/rss?row=20
+```
+
+## 参数
+
+- `row`：在订阅源中返回的项目数量（默认：20）
+  - 示例：`row=50`将返回50条最新笔记
+  - 您可以根据需要调整此值
+
+## 使用示例
+
+1. **默认订阅源（20个项目）**
+   ```
+   http://your-domain/api/rss/1/atom
+   http://your-domain/api/rss/1/rss
+   ```
+
+2. **自定义项目数量**
+   ```
+   http://your-domain/api/rss/1/atom?row=50
+   http://your-domain/api/rss/1/rss?row=100
+   ```
+
+## 订阅阅读器集成
+
+1. 复制所需的订阅源URL
+2. 将其添加到您的RSS阅读器
+3. 您的阅读器将自动获取新创建的公开笔记
+
+## 笔记隐私
+
+请记住：
+- 只有公开笔记会出现在RSS订阅源中
+- 私人笔记和受密码保护的笔记将被排除
+- 更改笔记的隐私设置将影响其在订阅源中的可用性

@@ -1,0 +1,83 @@
+---
+title: 'SSO设置'
+description: '配置和管理单点登录（SSO）认证'
+icon: 'key'
+---
+
+## 概述
+
+单点登录（SSO）允许用户使用他们现有的身份提供商账户访问您的应用程序。我们支持多种基于OAuth2.0的认证提供商，并为流行平台提供内置模板。
+
+## 配置OAuth2.0提供商
+
+<AccordionGroup>
+  <Accordion icon="gear" title="基本设置" defaultOpen>
+    1. 导航至设置 > SSO
+    2. 选择提供商模板或创建自定义提供商
+    3. 填写以下必需信息：
+       - 提供商ID
+       - 提供商名称
+       - 提供商图标
+       - 客户端ID
+       - 客户端密钥
+  </Accordion>
+
+  <Accordion icon="link" title="URL配置">
+    配置以下OAuth2.0端点：
+    - WellKnown URL
+    - 授权URL
+    - 令牌URL
+    - 用户信息URL
+  </Accordion>
+</AccordionGroup>
+
+## 内置模板
+
+<AccordionGroup>
+  <Accordion icon="github" title="支持的平台">
+    我们为以下平台提供内置模板：
+
+    - GitHub
+    - Google
+    - Facebook
+    - Apple
+    - Spotify
+    - Discord
+    - Twitter
+    - Slack
+    - Twitch
+    - LINE
+    - Instagram
+    - Coinbase
+    - Yandex
+    
+    选择模板后，您只需填写客户端ID和客户端密钥即可完成配置。
+  </Accordion>
+
+  <Accordion icon="code" title="自定义提供商">
+    要配置其他OAuth2.0提供商：
+    1. 选择"自定义提供商"选项
+    2. 手动输入所有OAuth2.0配置信息
+    3. 设置适当的权限范围
+  </Accordion>
+</AccordionGroup>
+
+## 安全指南
+
+<AccordionGroup>
+  <Accordion icon="shield" title="最佳实践">
+    - 使用HTTPS端点
+    - 安全存储客户端密钥
+    - 定期轮换密钥
+    - 限制授权范围
+    - 配置允许的回调URL
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+默认回调URL是：`http(s)://{您的域名}/api/auth/callback/{providerId}`。确保在您的OAuth提供商设置中添加此URL。
+</Note>
+
+<Warning>
+切勿在客户端代码中暴露客户端密钥。它应该只在服务器端使用。
+</Warning>

@@ -1,0 +1,103 @@
+---
+title: '发布您的插件'
+description: '当您的插件准备好发布时，您可以将其发布到Blinko插件市场。本指南将引导您完成准备和发布插件的过程。'
+icon: "upload"
+---
+
+## 先决条件
+
+发布前，请确保您已准备：
+- 一个完整且经过测试的插件
+- 一个公开的GitHub仓库
+- 一个有效的GitHub账户
+- 已安装Github Cli [Github Cli](https://cli.github.com/)
+
+## 发布流程
+
+### 1. 准备您的插件
+
+发布前，请确保您的插件满足所有要求：
+
+1. 更新您的`plugin.json`中的最新版本号
+2. 确保`plugin.json`中所有必填字段都已填写：
+   ```json
+   {
+     "name": "your-plugin-name",
+     "author": "your-name",
+     "url": "https://github.com/your-username/your-plugin",
+     "version": "1.0.0",
+     "minAppVersion": "0.0.0",
+     "displayName": {
+       "default": "Your Plugin Name",
+       "zh": "你的插件名称"
+     },
+     "description": {
+       "default": "Your plugin description",
+       "zh": "你的插件描述"
+     }
+   }
+   ```
+
+3. 彻底测试您的插件
+4. 提交并推送所有更改到GitHub
+
+### 2. 运行发布命令
+
+模板提供了一个简单的命令来处理发布过程：
+
+```bash
+bun release:publish
+```
+
+此命令将：
+1. 为生产环境构建您的插件
+2. 创建发布包（`release.zip`）
+3. 使用该包创建GitHub发布
+4. 将您的插件提交到[Blinko插件市场](https://github.com/blinko-space/blinko-plugin-marketplace)
+
+### 3. 幕后过程
+
+`release:publish`命令使用[blinko-cli](https://github.com/blinko-space/blinko-cli)处理发布过程。以下是具体流程：
+
+1. CLI验证您的`plugin.json`并确保所有必填字段都存在
+2. 将您插件的`release`目录打包成ZIP文件
+3. 使用GitHub的API，以您的版本号创建新的发布
+4. 发布包被上传到GitHub发布中
+5. 在Blinko插件市场仓库中创建一个问题请求发布
+
+### 4. 发布后
+
+运行发布命令后：
+1. 将在[Blinko插件市场](https://github.com/blinko-space/blinko-plugin-marketplace)中创建一个新问题
+2. Blinko团队将审核您的插件
+3. 一旦获得批准，您的插件将在市场中可用
+<img className="rounded-2xl" src="/images/2025-02-20-16-14-16.png" />
+4. 您可以通过GitHub问题跟踪您的提交状态
+
+## 故障排除
+
+### 常见问题
+
+1. GitHub身份验证
+   - 确保您已配置正确的GitHub凭据
+   - 检查您的仓库权限
+
+2. 版本号问题
+   - 确保您的版本遵循语义化版本控制（例如，1.0.0）
+   - 版本号必须高于先前的发布版本
+
+3. 发布包问题
+   - 验证您的发布目录包含所有必要的文件
+   - 检查ZIP文件是否成功创建
+
+4. 仓库访问
+   - 确认您的仓库是公开的
+   - 验证`plugin.json`中的仓库URL是否正确
+
+
+## 需要帮助？
+
+如果您遇到任何问题或需要帮助：
+- 查看我们的[社区论坛](/community/community)
+- 在[blinko-cli仓库](https://github.com/blinko-space/blinko-cli)中提出问题
+- 查看[市场仓库](https://github.com/blinko-space/blinko-plugin-marketplace)中的现有问题 

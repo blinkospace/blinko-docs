@@ -1,0 +1,55 @@
+---
+title: '关联账户'
+description: '将您的SSO账户与基于密码的账户关联'
+icon: 'link'
+---
+
+## 概述
+
+账户关联允许您将SSO认证的账户与基于密码的账户连接起来。此功能提供了一种无缝的方式来合并您的登录方法，同时保持安全性。
+
+## 工作原理
+
+<AccordionGroup>
+  <Accordion icon="link" title="关联流程" defaultOpen>
+    1. 使用SSO账户登录
+    2. 导航至设置 > 关联账户
+    3. 输入您基于密码的账户凭据
+    4. 确认关联流程
+  </Accordion>
+
+  <Accordion icon="info" title="重要说明">
+    - 关联后，您的SSO账户将使用关联账户的凭据
+    - 来自关联账户的双因素认证(2FA)设置将适用
+    - SSO账户信息不会同步到关联账户
+    - 您可以随时解除账户关联以恢复原始访问权限
+  </Accordion>
+</AccordionGroup>
+
+## 账户管理
+
+<AccordionGroup>
+  <Accordion icon="gear" title="关联后">
+    当账户关联时：
+    - 登录将使用关联账户的凭据
+    - 将强制执行关联账户的2FA设置
+    - SSO登录信息保持独立
+    - 关联账户的账户偏好和设置优先
+  </Accordion>
+
+  <Accordion icon="unlock" title="解除账户关联">
+    要解除账户关联：
+    1. 前往设置 > 关联账户
+    2. 点击"解除账户关联"
+    3. 确认操作
+    4. 两个账户将恢复到原始状态
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+账户关联是可选的，并且可以随时撤销。解除关联后，您的原始SSO登录方法将被恢复。
+</Note>
+
+<Warning>
+确保您记住关联账户的凭据，因为关联后的未来登录将需要这些凭据。
+</Warning>

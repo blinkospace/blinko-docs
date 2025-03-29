@@ -1,0 +1,98 @@
+---
+title: '文档'
+description: '本地运行和修改文档的指南'
+icon: 'book-open-cover'
+---
+
+## 先决条件
+
+<AccordionGroup>
+  <Accordion icon="node" title="安装Node.js" defaultOpen>
+    - 下载并安装[Node.js](https://nodejs.org/)
+    - 推荐版本：16.x或更高
+  </Accordion>
+
+  <Accordion icon="git" title="安装Git">
+    - 安装[Git](https://git-scm.com/)用于版本控制
+    - 克隆仓库时需要
+  </Accordion>
+</AccordionGroup>
+
+## 开始使用
+
+<Steps>
+  <Step title="安装Mintlify CLI">
+    使用npm全局安装Mintlify CLI：
+    ```bash
+    npm i -g mintlify
+    ```
+  </Step>
+
+  <Step title="克隆仓库">
+    克隆您的文档仓库：
+    ```bash
+    git clone https://github.com/blinko-space/blinko-docs
+    cd blinko-docs
+    ```
+  </Step>
+
+  <Step title="启动开发服务器">
+    在文档根目录运行开发服务器：
+    ```bash
+    mintlify dev
+    ```
+    文档将在`http://localhost:3000`可用
+  </Step>
+</Steps>
+
+## 进行更改
+
+<AccordionGroup>
+  <Accordion icon="pen" title="编辑内容" defaultOpen>
+    - 修改仓库中的`.mdx`文件
+    - 更改将在浏览器中热重载
+    - 使用Markdown和MDX组件
+  </Accordion>
+
+  <Accordion icon="image" title="添加图片">
+    - 将图片放在`/images`目录中
+    - 使用相对路径引用它们：
+    ```md
+    <img src="/images/example.png" />
+    ```
+  </Accordion>
+
+  <Accordion icon="sitemap" title="更新导航">
+    - 编辑`mint.json`修改导航结构
+    - 在MDX文件中更新页面元数据
+  </Accordion>
+</AccordionGroup>
+
+## 故障排除
+
+<Note>
+常见问题和解决方案：
+- 如果`mintlify dev`失败，尝试`mintlify install`重新安装依赖
+- 确保您在包含`mint.json`的正确目录中
+- 如果更改没有反映，清除浏览器缓存
+</Note>
+
+<Warning>
+始终将更改提交到版本控制：
+```bash
+git add .
+git commit -m "Update documentation"
+git push
+```
+</Warning>
+
+## 部署
+
+如果您已配置Mintlify GitHub应用，推送到默认分支的更改将自动部署。
+
+<Note>
+为获得最佳部署效果：
+- 首先在本地测试所有更改
+- 确保所有图片和链接都正常工作
+- 验证导航结构
+</Note>

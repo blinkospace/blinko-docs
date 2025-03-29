@@ -1,0 +1,82 @@
+---
+title: '开发'
+description: '学习如何本地设置和开发项目'
+icon: 'code'
+---
+
+## 先决条件
+
+在开始之前，确保您已安装以下内容：
+- Node.js (v18或更高)
+- pnpm (v8或更高)
+- PostgreSQL
+
+## 开始使用
+
+<AccordionGroup>
+  <Accordion icon="code-branch" title="1. 克隆仓库" defaultOpen>
+    ```bash
+    git clone https://github.com/blinko-space/blinko
+    cd blinko
+    ```
+  </Accordion>
+
+  <Accordion icon="cube" title="2. 安装依赖">
+    ```bash
+    pnpm install
+    ```
+  </Accordion>
+
+  <Accordion icon="database" title="3. 数据库设置">
+    - 创建PostgreSQL数据库
+    - 复制`.env.example`到`.env`
+    - 在`.env`中更新数据库连接详情
+    
+    运行迁移并填充数据库：
+    ```bash
+    pnpm migrate-dev
+    ```
+  </Accordion>
+
+  <Accordion icon="play" title="4. 启动开发服务器">
+    ```bash
+    pnpm dev
+    ```
+    应用将在`http://localhost:1111`可用
+  </Accordion>
+</AccordionGroup>
+
+## 可用脚本
+
+<AccordionGroup>
+  <Accordion icon="database" title="数据库命令">
+    ```bash
+    pnpm generate          # 生成Prisma客户端
+    pnpm prisma-studio     # 打开Prisma Studio
+    pnpm migrate           # 部署迁移
+    pnpm migrate-dev       # 创建并应用迁移
+    pnpm db-seed          # 填充数据库
+    pnpm db-reset         # 重置数据库（注意：删除所有数据）
+    ```
+  </Accordion>
+
+  <Accordion icon="code" title="开发命令">
+    ```bash
+    pnpm dev              # 启动开发服务器
+    pnpm dev:https        # 使用ngrok启动HTTPS
+    pnpm build           # 构建生产版本
+    pnpm start           # 启动生产服务器
+    pnpm analyze         # 分析包大小
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## 开发提示
+
+<Note>
+开发服务器默认在端口1111上运行。您可以在`package.json`脚本中修改此设置。
+</Note>
+
+<Warning>
+运行`db-reset`或`migrate-dev-reset`将清除数据库中的所有数据。请谨慎使用！
+</Warning>
