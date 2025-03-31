@@ -85,9 +85,9 @@
               {
                 "group": "Community",
                 "pages": [
-                  "en/ecosystem/blinko-snap",
-                  "en/ecosystem/blinko-hub",
-                  "en/ecosystem/blinko-plugin"
+                  "en/community/community",
+                  "en/community/development",
+                  "en/community/doc"
                 ]
               },
               {
