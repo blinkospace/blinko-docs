@@ -67,7 +67,8 @@
                 "pages": [
                   "en/ecosystem/blinko-snap",
                   "en/ecosystem/blinko-hub",
-                  "en/ecosystem/blinko-plugin"
+                  "en/ecosystem/blinko-plugin",
+                  "en/ecosystem/wechat-bot"
                 ]
               },
               {
@@ -167,7 +168,8 @@
                 "pages": [
                   "zh/ecosystem/blinko-snap",
                   "zh/ecosystem/blinko-hub",
-                  "zh/ecosystem/blinko-plugin"
+                  "zh/ecosystem/blinko-plugin",
+                  "zh/ecosystem/wechat-bot"
                 ]
               },
               {
