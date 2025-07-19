@@ -123,7 +123,7 @@ To deploy Blinko using docker compose, create a docker-compose.yml file with the
           ports:
             - 1111:1111
           healthcheck:
-            test: ["CMD", "curl", "-f", "http://blinko-website:1111/"]
+            test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://blinko-website:1111/ || exit 1"]
             interval: 30s 
             timeout: 10s   
             retries: 5     
