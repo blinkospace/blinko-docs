@@ -112,11 +112,11 @@
               {
                 "group": "Getting Started",
                 "pages": [
-                  "plugins/get-started",
-                  "plugins/publish-plugin",
-                  "plugins/api-reference",
-                  "plugins/store",
-                  "plugins/setting-panel"
+                  "en/plugins/get-started",
+                  "en/plugins/publish-plugin",
+                  "en/plugins/api-reference",
+                  "en/plugins/store",
+                  "en/plugins/setting-panel"
                 ]
               }
             ]
