@@ -4,34 +4,107 @@ description: 'AI聊天使用指南'
 icon: 'headset'
 ---
 
+# AI聊天
 
-## RAG
-当您保存笔记时，内容或文档将被用作AI的信息来源。
-您可以在笔记右下角看到一个**RAG**图标。
+与基于您笔记库的智能AI助手进行对话，获得个性化和上下文相关的回答。
 
-<img className="rounded-2xl" src="/images/2024-11-30-09-48-27.png" />
+**[需要AI聊天界面截图]**
 
-{/* 目前支持了以下的附件 */}
-目前我们支持以下文件类型：
+## 启动聊天
+
+### 全局AI聊天
+- 点击右下角的AI图标
+- 或使用快捷键 `Alt + Space`（桌面版）
+- AI将基于您的整个笔记库回答问题
+
+### 笔记相关聊天
+- 在特定笔记页面点击AI图标
+- AI将重点关注该笔记内容
+- 提供更精准的上下文回答
+
+## RAG知识库
+
+Blinko使用RAG（检索增强生成）技术，让AI基于您的笔记内容提供准确回答。
+
+### 支持的内容类型
+
 <CardGroup>
-  <Card title="PDF" icon="file-pdf" horizontal >
-    PDF
+  <Card title="文本笔记" icon="file-text" horizontal>
+    Markdown格式的文本内容
   </Card>
-  <Card title="TXT" icon="file" horizontal >
-    TXT
+  <Card title="PDF文档" icon="file-pdf" horizontal>
+    PDF文件的文本内容
   </Card>
-  <Card title="DOCX" icon="file-doc" horizontal >
-    DOCX
+  <Card title="Word文档" icon="file-doc" horizontal>
+    DOCX格式文档
   </Card>
-  <Card title="More" icon="info" horizontal >
-    ...
+  <Card title="图片" icon="image" horizontal>
+    图片中的文字（OCR）
+  </Card>
+  <Card title="附件" icon="paperclip" horizontal>
+    各种格式的附件文件
   </Card>
 </CardGroup>
 
+### RAG状态指示
+- 笔记右下角的**RAG**图标表示内容已索引
+- 绿色：已成功建立嵌入索引
+- 灰色：等待处理或未启用AI
 
+## 聊天功能
 
-## 聊天
-<img className="rounded-2xl" src="/images/2024-11-30-09-46-04.png" />
-点击右下角的图标开始与AI聊天。
-<img className="rounded-2xl" src="/images/2024-11-30-10-31-20.png" />
-现在，AI可以根据您保存的笔记回答您的问题。
+### 智能对话
+- **上下文理解**：AI理解您的问题背景
+- **个性化回答**：基于您的笔记风格和内容
+- **多轮对话**：保持对话上下文的连贯性
+- **实时搜索**：自动检索相关笔记内容
+
+### 高级功能
+- **工具调用**：AI可以创建、更新、删除笔记
+- **网络搜索**：获取最新信息补充回答
+- **多模态**：支持文本、图片内容理解
+- **代码执行**：辅助编程和技术问题
+
+## 使用技巧
+
+### 提问技巧
+- **具体明确**：描述清楚您想了解的内容
+- **引用上下文**：提及相关的笔记或主题
+- **分步骤**：复杂问题可以分步骤询问
+
+### 示例对话
+```
+用户：我之前记录的关于React的笔记有哪些要点？
+AI：根据您的笔记，React的主要要点包括...
+
+用户：帮我创建一个关于Vue.js的学习计划
+AI：基于您的学习风格，我为您制定以下计划...
+
+用户：总结一下本月的工作进展
+AI：根据您本月的笔记，工作进展如下...
+```
+
+## 聊天设置
+
+### 全局提示词
+- 在AI设置中配置全局提示词
+- 定制AI的回答风格和行为
+- 设置专业领域偏好
+
+### 模型选择
+- 不同模型有不同的特长
+- GPT-4：综合能力强，适合复杂推理
+- Claude：擅长分析和创作
+- DeepSeek：适合技术和编程问题
+
+## 隐私与安全
+
+### 数据处理
+- 对话内容仅用于当前会话
+- 笔记内容在本地处理和索引
+- API调用使用加密传输
+
+### 使用建议
+- 避免在对话中包含敏感信息
+- 定期检查和管理聊天历史
+- 使用本地模型（Ollama）获得更高隐私保护

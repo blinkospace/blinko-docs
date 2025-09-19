@@ -49,7 +49,8 @@
                       "en/how-to-use/ai/ai-writing",
                       "en/how-to-use/ai/ai-tag",
                       "en/how-to-use/ai/ai-emoji",
-                      "en/how-to-use/ai/ai-search"
+                      "en/how-to-use/ai/ai-search",
+                      "en/how-to-use/ai/ai-post-processing"
                     ]
                   },
                   "en/how-to-use/blinko-or-note",
@@ -58,14 +59,28 @@
                   "en/how-to-use/tags",
                   "en/how-to-use/daily-review",
                   "en/how-to-use/share-your-note",
-                  "en/how-to-use/article-view",
                   "en/how-to-use/rss"
+                ]
+              },
+              {
+                "group": "Desktop",
+                "pages": [
+                  "en/desktop/quick-note",
+                  "en/desktop/quick-ai",
+                  "en/desktop/autostart",
+                  "en/desktop/text-selection"
+                ]
+              },
+              {
+                "group": "Android",
+                "pages": [
+                  "en/android/share",
+                  "en/android/shortcuts"
                 ]
               },
               {
                 "group": "Ecosystem",
                 "pages": [
-                  "en/ecosystem/blinko-snap",
                   "en/ecosystem/blinko-hub",
                   "en/ecosystem/blinko-plugin",
                   "en/ecosystem/wechat-bot"
@@ -150,7 +165,8 @@
                       "zh/how-to-use/ai/ai-writing",
                       "zh/how-to-use/ai/ai-tag",
                       "zh/how-to-use/ai/ai-emoji",
-                      "zh/how-to-use/ai/ai-search"
+                      "zh/how-to-use/ai/ai-search",
+                      "zh/how-to-use/ai/ai-post-processing"
                     ]
                   },
                   "zh/how-to-use/blinko-or-note",
@@ -159,14 +175,28 @@
                   "zh/how-to-use/tags",
                   "zh/how-to-use/daily-review",
                   "zh/how-to-use/share-your-note",
-                  "zh/how-to-use/article-view",
                   "zh/how-to-use/rss"
+                ]
+              },
+              {
+                "group": "桌面版",
+                "pages": [
+                  "zh/desktop/quick-note",
+                  "zh/desktop/quick-ai",
+                  "zh/desktop/autostart",
+                  "zh/desktop/text-selection"
+                ]
+              },
+              {
+                "group": "安卓版",
+                "pages": [
+                  "zh/android/share",
+                  "zh/android/shortcuts"
                 ]
               },
               {
                 "group": "生态",
                 "pages": [
-                  "zh/ecosystem/blinko-snap",
                   "zh/ecosystem/blinko-hub",
                   "zh/ecosystem/blinko-plugin",
                   "zh/ecosystem/wechat-bot"

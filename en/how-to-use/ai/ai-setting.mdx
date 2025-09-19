@@ -4,91 +4,128 @@ description: 'Guide to Setting AI'
 icon: 'microchip-ai'
 ---
 
-<img className="rounded-2xl" src="/images/2024-11-29-20-23-29.png" />
+<img className="rounded-2xl" src="/images/2025-09-19-16-04-45.png" />
+
+## Basic Settings
 
 <AccordionGroup>
   <Accordion icon="toggle-on" title="1. Enable AI" defaultOpen>
-    - Locate the "**Use AI**" toggle in the settings.
-    - Switch it to the enabled state (purple).
+    - Locate the "**Use AI**" toggle in settings
+    - Switch it to the enabled state (purple)
   </Accordion>
 
-  <Accordion icon="server" title="2. Select the Model Provider">
-    - Choose the AI model provider from the "**Model Provider**" dropdown menu:
-      - If using OpenAI, ensure "OpenAI" is selected.
-      - If using Ollama, ensure "Ollama" is selected.
+  <Accordion icon="server" title="2. Select Model Provider">
+    Supported model providers:
+    - **OpenAI**: Official models and API
+    - **AzureOpenAI**: Microsoft Azure platform
+    - **Anthropic**: Claude series models
+    - **DeepSeek**: DeepSeek series models
+    - **Gemini**: Google Gemini models
+    - **Grok**: xAI Grok models
+    - **Ollama**: Local deployment models
+    - **OpenRouter**: Multi-model aggregation platform
   </Accordion>
 
-  <Accordion icon="robot" title="3. Select the AI Model">
-    - Choose a suitable model for your task from the "**AI Model**" dropdown.
+  <Accordion icon="robot" title="3. Select AI Model">
+    - Choose corresponding AI model based on provider
+    - Recommended models:
+      - OpenAI: gpt-4o, gpt-4o-mini
+      - Anthropic: claude-3-5-sonnet
+      - DeepSeek: deepseek-chat
   </Accordion>
 
-  <Accordion icon="network-wired" title="4. Set the Embedding Model">
-    - Select the embedding model from the "**Embedding Model**" dropdown.
+  <Accordion icon="key" title="4. Configure API Key">
+    - Enter API key in the "**API Key**" input field
+    - Ensure key is valid and has necessary permissions
+    - Different providers require different key formats
   </Accordion>
 
-  <Accordion icon="key" title="5. Input the API Key">
-    - Enter your OpenAI API key in the "**API Key**" input field:
-      - Ensure that your key is correct and has the necessary permissions.
-  </Accordion>
-
-  <Accordion icon="link" title="6. Set the API Endpoint">
-    - Configure the API endpoint in the "**API Endpoint**" input field:
-      - Ensure the address is valid and matches your API configuration.
-  </Accordion>
-
-  <Accordion icon="arrows-rotate" title="7. Rebuild the Embedding Index">
-    - If you need to rebuild the embedding index:
-      - Click the "**Rebuild**" button to regenerate the embeddings.
-      - If a forced rebuild is required, click "**Force Rebuild**."
+  <Accordion icon="link" title="5. Set API Endpoint (Optional)">
+    - Custom API endpoint address
+    - Used for proxy or self-deployed services
+    - Leave empty to use default endpoint
   </Accordion>
 </AccordionGroup>
 
-<Warning>
-Ensure the correctness of the API key and endpoint to avoid functionality issues.
-</Warning>
+## Embedding Settings
 
-By following the steps above, you can configure and start using the AI features.
-
-## Advanced
-
-<img className="rounded-2xl" src="/images/2024-12-08-13-56-36.png"/>
-
-### Parameters Explained
+<img className="rounded-2xl" src="/images/2025-09-19-16-05-21.png" />
 
 <AccordionGroup>
-  <Accordion icon="list-ol" title="Top K" defaultOpen>
-    - Determines the number of most relevant chunks to consider
-    - Range: 1-20 (recommended: 2-5)
-    - Higher values include more context but may reduce relevance
+  <Accordion icon="network-wired" title="Embedding Model" defaultOpen>
+    - Select model for generating text embeddings
+    - Support independent embedding API key and endpoint
+    - Recommended models:
+      - OpenAI: text-embedding-3-small, text-embedding-3-large
+      - Voyage: voyage-3-lite, voyage-large-2
   </Accordion>
 
-  <Accordion icon="chart-line" title="Score">
-    - Minimum similarity score threshold for context inclusion
-    - Range: 0.0-2.0 (recommended: 0.7-0.9)
-    - Higher values ensure more relevant matches
-    - Lower values include more potential matches
+  <Accordion icon="arrows-rotate" title="Rebuild Embedding Index">
+    - **Rebuild**: Incremental update of embedding index
+    - **Force Rebuild**: Complete regeneration of all embeddings
+    - Index rebuild required after changing embedding model
   </Accordion>
 
-  <Accordion icon="lambda" title="Embedding Lambda">
-    - Controls the balance between semantic and lexical similarity
-    - Range: 0.0-1.0 (recommended: 0.2-0.4)
-    - Higher values favor semantic meaning
-    - Lower values favor exact word matches
+  <Accordion icon="microchip" title="Embedding Dimensions">
+    - Set the dimension size of embedding vectors
+    - Auto-detect dimensions for common models
+    - Manual setting required for custom models
   </Accordion>
 </AccordionGroup>
 
-### Best Practices
+## Search Optimization Settings
 
-<Note>
-For optimal results:
-- Start with default values (Top K: 2, Score: 0.8, Lambda: 0.3)
-- Adjust gradually based on response quality
-- Monitor response relevance and accuracy
-</Note>
+**[Search Settings Screenshot Needed]**
+
+<AccordionGroup>
+  <Accordion icon="list-ol" title="Embedding Top K">
+    - Number of most relevant chunks returned by embedding search
+    - Range: 1-20 (recommended: 3-5)
+    - Higher values include more context
+  </Accordion>
+
+  <Accordion icon="chart-line" title="Embedding Score">
+    - Minimum similarity score threshold for embedding search
+    - Range: 0.0-1.0 (recommended: 0.4-0.7)
+    - Higher values ensure more relevant matches
+  </Accordion>
+
+  <Accordion icon="robot" title="Rerank Model">
+    - Use large language model for result reranking
+    - Improve relevance and accuracy of search results
+    - **Note**: Currently requires large language models, AI SDK framework doesn't support dedicated rerank models yet
+  </Accordion>
+
+  <Accordion icon="list-check" title="Rerank Settings">
+    - **Rerank Top K**: Number of results processed by reranking
+    - **Rerank Score**: Minimum score threshold after reranking
+    - **Use Embedding Endpoint**: Whether to use independent embedding API endpoint
+  </Accordion>
+</AccordionGroup>
+
+## Proxy Settings
+
+<AccordionGroup>
+  <Accordion icon="network-wired" title="HTTP Proxy">
+    - Enable HTTP proxy to access AI services
+    - Configure proxy host, port and authentication
+    - Suitable for network-restricted environments
+  </Accordion>
+</AccordionGroup>
+
+## Test Connection
+
+<AccordionGroup>
+  <Accordion icon="flask" title="Connection Test">
+    - Click "Test Connection" to verify configuration
+    - Check validity of API key and endpoint
+    - Ensure network connection is working
+  </Accordion>
+</AccordionGroup>
 
 <Warning>
-Extreme parameter values may lead to:
-- Very limited or irrelevant responses
-- Increased processing time
-- Reduced accuracy
+**Important Notes**:
+- Rerank model currently requires large language models (like GPT-4)
+- Future versions will support dedicated rerank models
+- Must rebuild index after changing embedding model
 </Warning>

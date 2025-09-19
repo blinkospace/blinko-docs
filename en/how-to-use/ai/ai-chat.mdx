@@ -4,34 +4,107 @@ description: 'Guide to Using AI Chat'
 icon: 'headset'
 ---
 
+# AI Chat
 
-## RAG
-When you save a note, the content or document will be used as a source of information for the AI.
-You can see the bottom right of the note has a **RAG** icon.
+Engage in conversations with an intelligent AI assistant based on your note library, getting personalized and contextually relevant answers.
 
-<img className="rounded-2xl" src="/images/2024-11-30-09-48-27.png" />
+**[AI Chat Interface Screenshot Needed]**
 
-{/* 目前支持了以下的附件 */}
-Now we support the following file types:
+## Starting a Chat
+
+### Global AI Chat
+- Click the AI icon in the bottom right corner
+- Or use hotkey `Alt + Space` (Desktop)
+- AI will answer questions based on your entire note library
+
+### Note-Specific Chat
+- Click AI icon on a specific note page
+- AI will focus on that note's content
+- Provides more precise contextual answers
+
+## RAG Knowledge Base
+
+Blinko uses RAG (Retrieval-Augmented Generation) technology to provide accurate answers based on your note content.
+
+### Supported Content Types
+
 <CardGroup>
-  <Card title="PDF" icon="file-pdf" horizontal >
-    PDF
+  <Card title="Text Notes" icon="file-text" horizontal>
+    Markdown formatted text content
   </Card>
-  <Card title="TXT" icon="file" horizontal >
-    TXT
+  <Card title="PDF Documents" icon="file-pdf" horizontal>
+    Text content from PDF files
   </Card>
-  <Card title="DOCX" icon="file-doc" horizontal >
-    DOCX
+  <Card title="Word Documents" icon="file-doc" horizontal>
+    DOCX format documents
   </Card>
-  <Card title="More" icon="info" horizontal >
-    ...
+  <Card title="Images" icon="image" horizontal>
+    Text from images (OCR)
+  </Card>
+  <Card title="Attachments" icon="paperclip" horizontal>
+    Various format attachment files
   </Card>
 </CardGroup>
 
+### RAG Status Indicator
+- **RAG** icon in note's bottom right shows content is indexed
+- Green: Successfully built embedding index
+- Gray: Waiting for processing or AI not enabled
 
+## Chat Features
 
-## Chat
-<img className="rounded-2xl" src="/images/2024-11-30-09-46-04.png" />
-Click the icon on the bottom right to start chatting with AI.
-<img className="rounded-2xl" src="/images/2024-11-30-10-31-20.png" />
-Now,ai can answer your questions based on the notes you have saved.
+### Intelligent Conversation
+- **Context Understanding**: AI understands your question background
+- **Personalized Answers**: Based on your note style and content
+- **Multi-turn Dialogue**: Maintains conversation context coherence
+- **Real-time Search**: Automatically retrieves relevant note content
+
+### Advanced Features
+- **Tool Calling**: AI can create, update, delete notes
+- **Web Search**: Get latest information to supplement answers
+- **Multimodal**: Support text and image content understanding
+- **Code Execution**: Assist with programming and technical questions
+
+## Usage Tips
+
+### Questioning Techniques
+- **Be Specific**: Clearly describe what you want to know
+- **Reference Context**: Mention related notes or topics
+- **Step by Step**: Break complex questions into steps
+
+### Example Conversations
+```
+User: What are the key points from my React notes?
+AI: Based on your notes, the main React points include...
+
+User: Help me create a Vue.js learning plan
+AI: Based on your learning style, I've created this plan...
+
+User: Summarize this month's work progress
+AI: According to your monthly notes, work progress is as follows...
+```
+
+## Chat Settings
+
+### Global Prompt
+- Configure global prompts in AI settings
+- Customize AI's answer style and behavior
+- Set professional domain preferences
+
+### Model Selection
+- Different models have different strengths
+- GPT-4: Strong overall capability, good for complex reasoning
+- Claude: Excels at analysis and creative work
+- DeepSeek: Great for technical and programming questions
+
+## Privacy & Security
+
+### Data Processing
+- Conversation content only used for current session
+- Note content processed and indexed locally
+- API calls use encrypted transmission
+
+### Usage Recommendations
+- Avoid including sensitive information in conversations
+- Regularly check and manage chat history
+- Use local models (Ollama) for higher privacy protection

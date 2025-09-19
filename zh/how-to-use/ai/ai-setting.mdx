@@ -4,91 +4,128 @@ description: 'AI设置指南'
 icon: 'microchip-ai'
 ---
 
-<img className="rounded-2xl" src="/images/2024-11-29-20-23-29.png" />
+<img className="rounded-2xl" src="/images/2025-09-19-16-04-45.png" />
+
+## 基础设置
 
 <AccordionGroup>
   <Accordion icon="toggle-on" title="1. 启用AI" defaultOpen>
-    - 在设置中找到"**使用AI**"开关。
-    - 将其切换到启用状态（紫色）。
+    - 在设置中找到"**使用AI**"开关
+    - 将其切换到启用状态（紫色）
   </Accordion>
 
   <Accordion icon="server" title="2. 选择模型提供商">
-    - 从"**模型提供商**"下拉菜单中选择AI模型提供商：
-      - 如果使用OpenAI，确保选择"OpenAI"。
-      - 如果使用Ollama，确保选择"Ollama"。
+    支持的模型提供商：
+    - **OpenAI**: 官方模型和API
+    - **AzureOpenAI**: 微软Azure平台
+    - **Anthropic**: Claude系列模型
+    - **DeepSeek**: DeepSeek系列模型
+    - **Gemini**: Google Gemini模型
+    - **Grok**: xAI Grok模型
+    - **Ollama**: 本地部署模型
+    - **OpenRouter**: 多模型聚合平台
   </Accordion>
 
   <Accordion icon="robot" title="3. 选择AI模型">
-    - 从"**AI模型**"下拉菜单中为您的任务选择合适的模型。
+    - 根据提供商选择对应的AI模型
+    - 推荐模型：
+      - OpenAI: gpt-4o, gpt-4o-mini
+      - Anthropic: claude-3-5-sonnet
+      - DeepSeek: deepseek-chat
   </Accordion>
 
-  <Accordion icon="network-wired" title="4. 设置嵌入模型">
-    - 从"**嵌入模型**"下拉菜单中选择嵌入模型。
+  <Accordion icon="key" title="4. 配置API密钥">
+    - 在"**API密钥**"输入框中输入密钥
+    - 确保密钥有效且具有必要权限
+    - 不同提供商需要不同的密钥格式
   </Accordion>
 
-  <Accordion icon="key" title="5. 输入API密钥">
-    - 在"**API密钥**"输入框中输入您的OpenAI API密钥：
-      - 确保您的密钥正确且具有必要的权限。
-  </Accordion>
-
-  <Accordion icon="link" title="6. 设置API端点">
-    - 在"**API端点**"输入框中配置API端点：
-      - 确保地址有效并与您的API配置匹配。
-  </Accordion>
-
-  <Accordion icon="arrows-rotate" title="7. 重建嵌入索引">
-    - 如果您需要重建嵌入索引：
-      - 点击"**重建**"按钮重新生成嵌入。
-      - 如果需要强制重建，点击"**强制重建**"。
+  <Accordion icon="link" title="5. 设置API端点（可选）">
+    - 自定义API端点地址
+    - 用于代理或自部署服务
+    - 留空则使用默认端点
   </Accordion>
 </AccordionGroup>
 
-<Warning>
-确保API密钥和端点的正确性，以避免功能问题。
-</Warning>
+## 嵌入设置
 
-按照上述步骤，您可以配置并开始使用AI功能。
-
-## 高级设置
-
-<img className="rounded-2xl" src="/images/2024-12-08-13-56-36.png"/>
-
-### 参数解释
+<img className="rounded-2xl" src="/images/2025-09-19-16-05-21.png" />
 
 <AccordionGroup>
-  <Accordion icon="list-ol" title="Top K" defaultOpen>
-    - 确定要考虑的最相关片段数量
-    - 范围：1-20（推荐：2-5）
-    - 更高的值包括更多上下文，但可能降低相关性
+  <Accordion icon="network-wired" title="嵌入模型" defaultOpen>
+    - 选择用于生成文本嵌入的模型
+    - 支持独立的嵌入API密钥和端点
+    - 推荐模型：
+      - OpenAI: text-embedding-3-small, text-embedding-3-large
+      - Voyage: voyage-3-lite, voyage-large-2
   </Accordion>
 
-  <Accordion icon="chart-line" title="分数">
-    - 上下文包含的最低相似度分数阈值
-    - 范围：0.0-2.0（推荐：0.7-0.9）
-    - 更高的值确保更相关的匹配
-    - 更低的值包括更多潜在匹配
+  <Accordion icon="arrows-rotate" title="重建嵌入索引">
+    - **重建**：增量更新嵌入索引
+    - **强制重建**：完全重新生成所有嵌入
+    - 更换嵌入模型后需要重建索引
   </Accordion>
 
-  <Accordion icon="lambda" title="嵌入Lambda">
-    - 控制语义相似度和词汇相似度之间的平衡
-    - 范围：0.0-1.0（推荐：0.2-0.4）
-    - 更高的值倾向于语义含义
-    - 更低的值倾向于精确词匹配
+  <Accordion icon="microchip" title="嵌入维度">
+    - 设置嵌入向量的维度大小
+    - 自动检测常见模型的维度
+    - 自定义模型需手动设置
   </Accordion>
 </AccordionGroup>
 
-### 最佳实践
+## 搜索优化设置
 
-<Note>
-为获得最佳结果：
-- 从默认值开始（Top K：2，分数：0.8，Lambda：0.3）
-- 根据响应质量逐步调整
-- 监控响应相关性和准确性
-</Note>
+**[需要搜索设置截图]**
+
+<AccordionGroup>
+  <Accordion icon="list-ol" title="Embedding Top K">
+    - 嵌入搜索返回的最相关片段数量
+    - 范围：1-20（推荐：3-5）
+    - 更高的值包括更多上下文
+  </Accordion>
+
+  <Accordion icon="chart-line" title="Embedding Score">
+    - 嵌入搜索的最低相似度分数阈值
+    - 范围：0.0-1.0（推荐：0.4-0.7）
+    - 更高的值确保更相关的匹配
+  </Accordion>
+
+  <Accordion icon="robot" title="重排模型">
+    - 使用大语言模型进行结果重排序
+    - 提高搜索结果的相关性和准确性
+    - **注意**：目前需要使用大语言模型，AI SDK框架暂未支持专用重排模型
+  </Accordion>
+
+  <Accordion icon="list-check" title="重排设置">
+    - **重排 Top K**：重排序处理的结果数量
+    - **重排分数**：重排后的最低分数阈值
+    - **使用嵌入端点**：是否使用独立的嵌入API端点
+  </Accordion>
+</AccordionGroup>
+
+## 代理设置
+
+<AccordionGroup>
+  <Accordion icon="network-wired" title="HTTP代理">
+    - 启用HTTP代理访问AI服务
+    - 配置代理主机、端口和认证信息
+    - 适用于网络受限环境
+  </Accordion>
+</AccordionGroup>
+
+## 测试连接
+
+<AccordionGroup>
+  <Accordion icon="flask" title="连接测试">
+    - 点击"测试连接"验证配置
+    - 检查API密钥和端点的有效性
+    - 确保网络连接正常
+  </Accordion>
+</AccordionGroup>
 
 <Warning>
-极端参数值可能导致：
-- 非常有限或不相关的响应
-- 增加处理时间
-- 降低准确性
+**重要提醒**：
+- 重排模型目前需要使用大语言模型（如GPT-4）
+- 后续版本将支持专用的重排序模型
+- 更换嵌入模型后必须重建索引
 </Warning>
