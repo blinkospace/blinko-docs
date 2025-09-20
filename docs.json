@@ -257,8 +257,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/logo-light-4000x1400.png",
-    "dark": "/logo/logo-dark-4000x1400.png"
+    "light": "/logo/logo-light-title.png",
+    "dark": "/logo/logo-dark-title.png"
   },
   "navbar": {
     "links": [
